@@ -64,9 +64,7 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 				}
 				char => step_at! {punct.span()=>
 					//TODO?: Spacing
-					let punct: syn::Token![#punct] = #input_ident
-						.parse()
-						.map_err(|error| syn::Error::new(error.span(), format_args!("Expected `{}`", #char)))?;
+					let punct: syn::Token![#punct] = #input_ident.parse()?;
 				},
 			},
 			TokenTree::Literal(_) => todo!("literal"),
