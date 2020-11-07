@@ -2,7 +2,7 @@
 
 ## next
 
-* Fixed README typo and CHANGELOG date
+* README and CHANGELOG fixes
 
 ## 0.0.1
 
