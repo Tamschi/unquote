@@ -54,6 +54,27 @@ assert_eq!(parsed.value(), "Hello!");
 # }
 ```
 
+## Implementation Status
+
+| Grammar |  |
+|-|-|
+| Punct | ✔ (probably) |
+| `#binding` | ✔ |
+| `##`-escapes |  |
+| `()` |  |
+| `{}` |  |
+| `[]` |  |
+| Ident |  |
+| Literal |  |
+| `#(#binding)?` |  |
+| `#(#binding),?` |  |
+| `#(#binding)*` |  |
+| `#(#binding),*` |  |
+| `#(#binding)+`¹ |  |
+| `#(#binding),+`¹ |  |
+
+¹ [Required variadics are great.](https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2)
+
 ## License
 
 Licensed under either of
