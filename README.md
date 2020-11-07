@@ -60,21 +60,46 @@ assert_eq!(parsed.value(), "Hello!");
 
 ## Implementation Status
 
-| Grammar |  |
+(roughly in order of priority)
+
+| Tokens |  |
 |-|-|
 | Punct | ✔ (probably) |
+| Ident |  |
+| Literal |  |
+
+| Bindings |  |
+|-|-|
 | `#binding` | ✔ |
 | `##`-escapes |  |
+
+| Groups |  |
+|-|-|
 | `()` |  |
 | `{}` |  |
 | `[]` |  |
-| Ident |  |
-| Literal |  |
+
+| Variadics |  |
+|-|-|
 | `#(#binding)?` |  |
 | `#(#binding)*` |  |
 | `#(#binding),*` |  |
 | `#(#binding)+`¹ |  |
 | `#(#binding),+`¹ |  |
+
+| Bound Groups |  |
+|-|-|
+| `#binding@()` |  |
+| `#binding@{}` |  |
+| `#binding@[]` |  |
+| `#@`-escapes |  |
+
+| Bound Compounds |  |
+|-|-|
+| `#binding: Struct@()` |  |
+| `#binding: Struct@{}` |  |
+| `#binding: Struct@[]` |  |
+| `#:`-escapes |  |
 
 ¹ Not specifically present in `quote`, but [required variadics are great.](https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2)
 
