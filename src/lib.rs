@@ -51,7 +51,7 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 				Delimiter::Parenthesis => todo!("parenthesis"),
 				Delimiter::Brace => todo!("brace"),
 				Delimiter::Bracket => todo!("bracket"),
-				Delimiter::None => todo!("none"),
+				Delimiter::None => call2(group.stream(), unquote_inner)?,
 			},
 			TokenTree::Ident(_ident) => todo!("ident"),
 			TokenTree::Punct(punct) => match punct.as_char() {
