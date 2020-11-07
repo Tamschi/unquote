@@ -12,8 +12,7 @@ fn html_comment() -> Result<()> {
 		unquote!(input, <!-- #reparsed -->);
 		assert_eq!(reparsed.value(), "Hello!");
 		Result::Ok(())
-	})
-	.unwrap();
+	})?;
 
 	Ok(())
 }

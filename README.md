@@ -26,7 +26,32 @@ cargo add unquote
 ## Example
 
 ```rust
-// TODO_EXAMPLE
+use call2_for_syn::call2;
+use quote::quote;
+use syn::{LitStr, parse::ParseStream, Result};
+use unquote::unquote;
+
+# fn main() -> Result<()> {
+// Sample input
+let tokens = quote!(<!-- "Hello!" -->);
+
+// Analogous to a parser implementation with `syn`:
+fn parser_function(input: ParseStream) -> Result<LitStr> {
+  // Declare bindings ahead of time.
+  // Rust can usually infer the type.
+  let parsed;
+
+  // This uses the ? operator internally -
+  // It needs to be inside a `Result`-returning function.
+  unquote!(input, <!-- #parsed -->);
+
+  Ok(parsed)
+}
+
+let parsed = call2(tokens, parser_function)?;
+assert_eq!(parsed.value(), "Hello!");
+# Ok(())
+# }
 ```
 
 ## License

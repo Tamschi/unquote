@@ -31,6 +31,7 @@ maintenance = { status = "experimental" }
 [lib]
 proc-macro = true
 
+# TODO: Re-export libraries and limit syn features!
 [dependencies]
 call2-for-syn = "1.0.0"
 proc-macro2 = "1.0.24"
