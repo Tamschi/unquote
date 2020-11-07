@@ -13,7 +13,9 @@
 [![open pull requests](https://img.shields.io/github/issues-pr-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/pulls)
 [![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/unquote.svg)](https://web.crev.dev/rust-reviews/crate/unquote/)
 
-Reverse quote macros... that is: Macros to parse input from a ParseStream according to a given pattern.
+A reverse quote macro... that is: A macro to parse input from a [`ParseStream`] according to a given pattern.
+
+[`ParseStream`]: https://docs.rs/syn/1/syn/parse/type.ParseStream.html
 
 > Note: This library is as work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
 >
