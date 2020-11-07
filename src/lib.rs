@@ -77,6 +77,7 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 	}
 
 	// Catch up input.
+	//TODO: This should be handled more nicely...
 	input_stream.parse::<TokenStream>().unwrap();
 
 	Ok(quote_spanned!(Span::mixed_site()=> { #output }))
