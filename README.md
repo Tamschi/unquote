@@ -64,7 +64,7 @@ assert_eq!(parsed.value(), "Hello!");
 
 | Tokens |  |
 |-|-|
-| Punct | ✔ (probably) |
+| Punct | ✔² |
 | Ident |  |
 | Literal |  |
 
@@ -102,6 +102,8 @@ assert_eq!(parsed.value(), "Hello!");
 | `#:`-escapes |  |
 
 ¹ Not specifically present in `quote`, but [required variadics are great.](https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2)
+
+² Currently without distinction regarding combinations like `=>` vs. `= >` and such. Whether this changes depends on implementation difficulty.
 
 ## License
 

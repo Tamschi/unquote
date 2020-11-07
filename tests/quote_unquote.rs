@@ -12,7 +12,15 @@ fn html_comment() -> Result<()> {
 		unquote!(input, <!-- #reparsed -->);
 		assert_eq!(reparsed.value(), "Hello!");
 		Result::Ok(())
-	})?;
+	})
+}
 
-	Ok(())
+#[test]
+fn multipunct() -> Result<()> {
+	let tokens = quote!(=>);
+
+	call2(tokens, |input| {
+		unquote!(input, =>);
+		Result::Ok(())
+	})
 }
