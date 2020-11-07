@@ -4,7 +4,7 @@
 [![Crates.io](https://img.shields.io/crates/v/unquote)](https://crates.io/crates/unquote)
 [![Docs.rs](https://docs.rs/unquote/badge.svg)](https://docs.rs/crates/unquote)
 
-![Rust 1.40.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.40.0&color=grey)
+![Rust 1.45.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.45.0&color=grey)
 [![Build Status](https://travis-ci.com/Tamschi/unquote.svg?branch=develop)](https://travis-ci.com/Tamschi/unquote/branches)
 ![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.1)
 
@@ -16,6 +16,8 @@
 Reverse quote macros... that is: Macros to parse input from a ParseStream according to a given pattern.
 
 > Note: This library is as work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
+>
+> This macro currently requires `syn` to be available in the current namespace with at least the `"parsing"` feature enabled. This should get fixed with the next larger refactor.
 
 ## Installation
 
