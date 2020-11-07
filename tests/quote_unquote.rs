@@ -7,11 +7,13 @@ use unquote::unquote;
 fn html_comment() -> Result<()> {
 	let tokens = quote!(<!-- "Hello!" -->);
 
-	let mut reparsed: Option<LitStr> = None;
-
-	call2(tokens, |input| unquote!(input, <!-- #reparsed -->))?;
-
-	assert_eq!(reparsed.unwrap().value(), "Hello!");
+	call2(tokens, |input| {
+		let reparsed: LitStr;
+		unquote!(input, <!-- #reparsed -->);
+		assert_eq!(reparsed.value(), "Hello!");
+		Result::Ok(())
+	})
+	.unwrap();
 
 	Ok(())
 }

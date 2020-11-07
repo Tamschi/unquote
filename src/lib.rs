@@ -10,16 +10,15 @@ mod readme {
 // However, I frankly don't understand how that one works, so it's proc-macro time.
 
 use call2_for_syn::call2;
-use proc_macro2::{Delimiter, Punct, Span, TokenStream, TokenTree};
-use quote::{quote, quote_spanned};
+use proc_macro2::{Delimiter, Span, TokenStream, TokenTree};
+use quote::quote_spanned;
 use syn::{parse::ParseStream, Error, Expr, Ident, Result, Token};
 
 #[proc_macro]
 pub fn unquote(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-	let output = call2(input.into(), |input| unquote_inner(input))
-		.unwrap_or_else(|error| error.to_compile_error());
-	dbg!(&output);
-	dbg!(output.into())
+	call2(input.into(), |input| unquote_inner(input))
+		.unwrap_or_else(|error| error.to_compile_error())
+		.into()
 }
 
 macro_rules! step_at {
@@ -47,7 +46,7 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 	while let Some((token, next)) = input.token_tree() {
 		input = next;
 
-		let step: TokenStream = match dbg!(token) {
+		let step: TokenStream = match token {
 			TokenTree::Group(group) => match group.delimiter() {
 				Delimiter::Parenthesis => todo!("parenthesis"),
 				Delimiter::Brace => todo!("brace"),
@@ -62,17 +61,15 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 						.ok_or_else(|| Error::new(input.span(), "Expected identifier"))?;
 					input = next;
 					step_at! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
-						#placeholder = Some(#input_ident.parse()?);
+						#placeholder = #input_ident.parse()?;
 					}
 				}
-				char => {
-					let char_punct = Punct::new(char, punct.spacing());
-					step_at! {punct.span()=>
-						let punct: syn::Token![#char_punct] = #input_ident
-							.parse()
-							.map_err(|error| syn::Error::new(error.span(), format_args!("Expected `{}`", #char)))?;
-					}
-				}
+				char => step_at! {punct.span()=>
+					//TODO?: Spacing
+					let punct: syn::Token![#punct] = #input_ident
+						.parse()
+						.map_err(|error| syn::Error::new(error.span(), format_args!("Expected `{}`", #char)))?;
+				},
 			},
 			TokenTree::Literal(_) => todo!("literal"),
 		};
@@ -82,14 +79,7 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 	// Catch up input.
 	input_stream.parse::<TokenStream>().unwrap();
 
-	dbg!("A");
-
-	//TODO: Output a tuple of the matched items instead!
-	output.extend(quote_spanned!(Span::mixed_site()=> syn::Result::<_>::Ok(())));
-
-	dbg!("B");
-
-	Ok(quote_spanned!(Span::mixed_site()=> (||{ #output })()))
+	Ok(quote_spanned!(Span::mixed_site()=> { #output }))
 }
 
 fn _scratchpad(input: ParseStream) -> Result<()> {
