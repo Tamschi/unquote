@@ -103,6 +103,15 @@ fn main() -> Result<()> {
 | `#binding: Struct@[]` |  |
 | `#:`-escapes |  |
 
+| Span Snapshots...? |  |
+|-|-|
+| `#^span` |  |
+| `#$span` | ❔⁴ |
+
+| Positional Bindings...?⁵ |  |
+|-|-|
+| `#0` |  |
+
 ¹  Note that all variadics are eager beyond the first [`TokenTree`] and only do very shallow speculative parsing! In practice, this means that for example parsing `++` as `#(+-)?++` will fail, as the first `+` "locks in" the optional phrase.
 
 [`TokenTree`]: https://docs.rs/proc-macro2/1/proc_macro2/enum.TokenTree.html
@@ -113,6 +122,12 @@ fn main() -> Result<()> {
 [required variadics are great.]: https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2
 
 ³ Currently without distinction regarding combinations like `=>` vs. `= >` and such. This *will* change eventually, along with a breaking semver change.
+
+⁴ I'm not yet sure how cleanly capturing spanning [`Span`]s would be, or how viable doing so is on stable.
+
+[`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
+
+⁵ This would come in handy when using the macro for example in `if let` conditions (since the positional bindings would be returned only by value in the macro expression's result), and wouldn't interfere with named bindings. It's definitely more of a bonus feature though, in case it can indeed be added cleanly.
 
 ## License
 
