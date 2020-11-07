@@ -15,6 +15,10 @@
 
 Reverse quote macros... that is: Macros to parse input from a ParseStream according to a given pattern.
 
+Note that all variadics are eager beyond the first [`TokenTree`]!
+
+[`TokenTree`]: https://docs.rs/proc-macro2/1/proc_macro2/enum.TokenTree.html
+
 ## Installation
 
 Please use [cargo-edit](https://crates.io/crates/cargo-edit) to always add the latest version of this library:
@@ -73,7 +77,7 @@ assert_eq!(parsed.value(), "Hello!");
 | `#(#binding)+`¹ |  |
 | `#(#binding),+`¹ |  |
 
-¹ [Required variadics are great.](https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2)
+¹ Not specifically present in `quote`, but [required variadics are great.](https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2)
 
 ## License
 
