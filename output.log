@@ -1,0 +1,2900 @@
+   Compiling unquote v0.0.1 (C:\Users\Tamme\Documents\Projekte\unquote)
+[src\lib.rs:49] token = Punct {
+    char: '<',
+    spacing: Joint,
+    span: #0 bytes(241..242),
+}
+[src\lib.rs:49] token = Punct {
+    char: '!',
+    spacing: Joint,
+    span: #0 bytes(242..243),
+}
+[src\lib.rs:49] token = Punct {
+    char: '-',
+    spacing: Joint,
+    span: #0 bytes(243..244),
+}
+[src\lib.rs:49] token = Punct {
+    char: '-',
+    spacing: Alone,
+    span: #0 bytes(244..245),
+}
+[src\lib.rs:49] token = Punct {
+    char: '#',
+    spacing: Alone,
+    span: #0 bytes(246..247),
+}
+[src\lib.rs:49] token = Punct {
+    char: '-',
+    spacing: Joint,
+    span: #0 bytes(256..257),
+}
+[src\lib.rs:49] token = Punct {
+    char: '-',
+    spacing: Joint,
+    span: #0 bytes(257..259),
+}
+[src\lib.rs:49] token = Punct {
+    char: '>',
+    spacing: Alone,
+    span: #0 bytes(257..259),
+}
+[src\lib.rs:84] "A" = "A"
+[src\lib.rs:88] "B" = "B"
+[src\lib.rs:90] Ok(quote!((|| { # output }) ())) = Ok(
+    TokenStream [
+        Group {
+            delimiter: Parenthesis,
+            stream: TokenStream [
+                Punct {
+                    ch: '|',
+                    spacing: Joint,
+                    span: #31 bytes(225..260),
+                },
+                Punct {
+                    ch: '|',
+                    spacing: Alone,
+                    span: #31 bytes(225..260),
+                },
+                Group {
+                    delimiter: Brace,
+                    stream: TokenStream [
+                        Ident {
+                            ident: "let",
+                            span: #32 bytes(225..260),
+                        },
+                        Ident {
+                            ident: "input",
+                            span: #32 bytes(225..260),
+                        },
+                        Punct {
+                            ch: '=',
+                            spacing: Alone,
+                            span: #32 bytes(225..260),
+                        },
+                        Ident {
+                            ident: "input",
+                            span: #0 bytes(234..239),
+                        },
+                        Punct {
+                            ch: ';',
+                            spacing: Alone,
+                            span: #32 bytes(225..260),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(241..242),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(241..242),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{3c}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(241..242),
+                                                },
+                                            ],
+                                            span: #32 bytes(241..242),
+                                        },
+                                    ],
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(241..242),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(241..242),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(241..242),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{3c}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(241..242),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(241..242),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(241..242),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{3c}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(241..242),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(241..242),
+                                                },
+                                            ],
+                                            span: #32 bytes(241..242),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(241..242),
+                                        },
+                                    ],
+                                    span: #32 bytes(241..242),
+                                },
+                            ],
+                            span: #32 bytes(241..242),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(242..243),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(242..243),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{21}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(242..243),
+                                                },
+                                            ],
+                                            span: #32 bytes(242..243),
+                                        },
+                                    ],
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(242..243),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(242..243),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(242..243),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{21}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(242..243),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(242..243),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(242..243),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{21}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(242..243),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(242..243),
+                                                },
+                                            ],
+                                            span: #32 bytes(242..243),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(242..243),
+                                        },
+                                    ],
+                                    span: #32 bytes(242..243),
+                                },
+                            ],
+                            span: #32 bytes(242..243),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(243..244),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(243..244),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(243..244),
+                                                },
+                                            ],
+                                            span: #32 bytes(243..244),
+                                        },
+                                    ],
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(243..244),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(243..244),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(243..244),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{2d}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(243..244),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(243..244),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(243..244),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(243..244),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(243..244),
+                                                },
+                                            ],
+                                            span: #32 bytes(243..244),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(243..244),
+                                        },
+                                    ],
+                                    span: #32 bytes(243..244),
+                                },
+                            ],
+                            span: #32 bytes(243..244),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(244..245),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(244..245),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(244..245),
+                                                },
+                                            ],
+                                            span: #32 bytes(244..245),
+                                        },
+                                    ],
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(244..245),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(244..245),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(244..245),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{2d}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(244..245),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(244..245),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(244..245),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(244..245),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(244..245),
+                                                },
+                                            ],
+                                            span: #32 bytes(244..245),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(244..245),
+                                        },
+                                    ],
+                                    span: #32 bytes(244..245),
+                                },
+                            ],
+                            span: #32 bytes(244..245),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "reparsed",
+                                    span: #0 bytes(247..255),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(246..255),
+                                },
+                                Ident {
+                                    ident: "input",
+                                    span: #32 bytes(225..260),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(246..255),
+                                },
+                                Ident {
+                                    ident: "parse",
+                                    span: #32 bytes(246..255),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(246..255),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(246..255),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(246..255),
+                                },
+                            ],
+                            span: #32 bytes(246..255),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(256..257),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(256..257),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(256..257),
+                                                },
+                                            ],
+                                            span: #32 bytes(256..257),
+                                        },
+                                    ],
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(256..257),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(256..257),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(256..257),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{2d}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(256..257),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(256..257),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(256..257),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(256..257),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(256..257),
+                                                },
+                                            ],
+                                            span: #32 bytes(256..257),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(256..257),
+                                        },
+                                    ],
+                                    span: #32 bytes(256..257),
+                                },
+                            ],
+                            span: #32 bytes(256..257),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(257..259),
+                                                },
+                                            ],
+                                            span: #32 bytes(257..259),
+                                        },
+                                    ],
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(257..259),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{2d}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{2d}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(257..259),
+                                                },
+                                            ],
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                    ],
+                                    span: #32 bytes(257..259),
+                                },
+                            ],
+                            span: #32 bytes(257..259),
+                        },
+                        Group {
+                            delimiter: Brace,
+                            stream: TokenStream [
+                                Ident {
+                                    ident: "let",
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "syn",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Joint,
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ':',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "Punct",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "dbg",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "dbg",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: '!',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "input",
+                                                    span: #32 bytes(225..260),
+                                                },
+                                            ],
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Ident {
+                                            ident: "parse",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [],
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: '.',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Ident {
+                                            ident: "map_err",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "error",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: '|',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "error",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{3e}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(257..259),
+                                                },
+                                            ],
+                                            span: #32 bytes(257..259),
+                                        },
+                                    ],
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '?',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: ';',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "if",
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "punct",
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '.',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Ident {
+                                    ident: "as_char",
+                                    span: #32 bytes(257..259),
+                                },
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '!',
+                                    spacing: Joint,
+                                    span: #32 bytes(257..259),
+                                },
+                                Punct {
+                                    ch: '=',
+                                    spacing: Alone,
+                                    span: #32 bytes(257..259),
+                                },
+                                Literal {
+                                    kind: Char,
+                                    symbol: "\\u{3e}",
+                                    suffix: None,
+                                    span: #31 bytes(225..260),
+                                },
+                                Group {
+                                    delimiter: Brace,
+                                    stream: TokenStream [
+                                        Ident {
+                                            ident: "return",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Ident {
+                                            ident: "Err",
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Group {
+                                            delimiter: Parenthesis,
+                                            stream: TokenStream [
+                                                Ident {
+                                                    ident: "syn",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "Error",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Joint,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Punct {
+                                                    ch: ':',
+                                                    spacing: Alone,
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Ident {
+                                                    ident: "new",
+                                                    span: #32 bytes(257..259),
+                                                },
+                                                Group {
+                                                    delimiter: Parenthesis,
+                                                    stream: TokenStream [
+                                                        Ident {
+                                                            ident: "punct",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '.',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "span",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Ident {
+                                                            ident: "format_args",
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: '!',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Group {
+                                                            delimiter: Parenthesis,
+                                                            stream: TokenStream [
+                                                                Literal {
+                                                                    kind: Str,
+                                                                    symbol: "Expected `{}`",
+                                                                    suffix: None,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Punct {
+                                                                    ch: ',',
+                                                                    spacing: Alone,
+                                                                    span: #32 bytes(257..259),
+                                                                },
+                                                                Literal {
+                                                                    kind: Char,
+                                                                    symbol: "\\u{3e}",
+                                                                    suffix: None,
+                                                                    span: #31 bytes(225..260),
+                                                                },
+                                                            ],
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                        Punct {
+                                                            ch: ',',
+                                                            spacing: Alone,
+                                                            span: #32 bytes(257..259),
+                                                        },
+                                                    ],
+                                                    span: #32 bytes(257..259),
+                                                },
+                                            ],
+                                            span: #32 bytes(257..259),
+                                        },
+                                        Punct {
+                                            ch: ';',
+                                            spacing: Alone,
+                                            span: #32 bytes(257..259),
+                                        },
+                                    ],
+                                    span: #32 bytes(257..259),
+                                },
+                            ],
+                            span: #32 bytes(257..259),
+                        },
+                        Ident {
+                            ident: "syn",
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: ':',
+                            spacing: Joint,
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: ':',
+                            spacing: Alone,
+                            span: #31 bytes(225..260),
+                        },
+                        Ident {
+                            ident: "Result",
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: ':',
+                            spacing: Joint,
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: ':',
+                            spacing: Alone,
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: '<',
+                            spacing: Alone,
+                            span: #31 bytes(225..260),
+                        },
+                        Ident {
+                            ident: "_",
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: '>',
+                            spacing: Alone,
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: ':',
+                            spacing: Joint,
+                            span: #31 bytes(225..260),
+                        },
+                        Punct {
+                            ch: ':',
+                            spacing: Alone,
+                            span: #31 bytes(225..260),
+                        },
+                        Ident {
+                            ident: "Ok",
+                            span: #31 bytes(225..260),
+                        },
+                        Group {
+                            delimiter: Parenthesis,
+                            stream: TokenStream [
+                                Group {
+                                    delimiter: Parenthesis,
+                                    stream: TokenStream [],
+                                    span: #31 bytes(225..260),
+                                },
+                            ],
+                            span: #31 bytes(225..260),
+                        },
+                    ],
+                    span: #31 bytes(225..260),
+                },
+            ],
+            span: #31 bytes(225..260),
+        },
+        Group {
+            delimiter: Parenthesis,
+            stream: TokenStream [],
+            span: #31 bytes(225..260),
+        },
+    ],
+)
+error: proc macro panicked
+  --> tests\quote_unquote.rs:12:24
+   |
+12 |     call2(tokens, |input| unquote!(input, <!-- #reparsed -->))?;
+   |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: message: called `Result::unwrap()` on an `Err` value: Error("unexpected token")
+
+error: aborting due to previous error
+
+error: could not compile `unquote`
+
+To learn more, run the command again with --verbose.

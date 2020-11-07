@@ -31,6 +31,13 @@ maintenance = { status = "experimental" }
 [lib]
 proc-macro = true
 
+[dependencies]
+call2-for-syn = "1.0.0"
+proc-macro2 = "1.0.24"
+quote = "1.0.7"
+syn = { version = "1.0.48", features = ["parsing", "full"], default-features = false }
+
+
 [dev-dependencies]
 cargo-husky = "1.5.0"
 doc-comment = "0.3.3"
