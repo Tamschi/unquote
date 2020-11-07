@@ -71,7 +71,6 @@ assert_eq!(parsed.value(), "Hello!");
 | Ident |  |
 | Literal |  |
 | `#(#binding)?` |  |
-| `#(#binding),?` |  |
 | `#(#binding)*` |  |
 | `#(#binding),*` |  |
 | `#(#binding)+`¹ |  |
