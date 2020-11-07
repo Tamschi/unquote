@@ -62,7 +62,7 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 						#placeholder = #input_ident.parse()?;
 					}
 				}
-				char => step_at! {punct.span()=>
+				_char => step_at! {punct.span()=>
 					//TODO?: Spacing
 					let punct: syn::Token![#punct] = #input_ident.parse()?;
 				},
