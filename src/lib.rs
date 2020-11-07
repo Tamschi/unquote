@@ -23,9 +23,7 @@ pub fn unquote(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 
 macro_rules! step_at {
 	($input_span:expr => $($output:tt)*) => {
-		quote_spanned! {$input_span.resolved_at(Span::mixed_site())=> {
-			$($output)*
-		}}
+		quote_spanned!($input_span.resolved_at(Span::mixed_site())=> $($output)*)
 	};
 }
 
