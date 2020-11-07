@@ -15,9 +15,7 @@
 
 Reverse quote macros... that is: Macros to parse input from a ParseStream according to a given pattern.
 
-Note that all variadics are eager beyond the first [`TokenTree`]!
-
-[`TokenTree`]: https://docs.rs/proc-macro2/1/proc_macro2/enum.TokenTree.html
+> Note: This library is as work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
 
 ## Installation
 
@@ -64,7 +62,7 @@ assert_eq!(parsed.value(), "Hello!");
 
 | Tokens |  |
 |-|-|
-| Punct | ✔² |
+| Punct | ✔³ |
 | Ident |  |
 | Literal |  |
 
@@ -79,13 +77,13 @@ assert_eq!(parsed.value(), "Hello!");
 | `{}` |  |
 | `[]` |  |
 
-| Variadics |  |
+| Variadics¹ |  |
 |-|-|
 | `#(#binding)?` |  |
 | `#(#binding)*` |  |
 | `#(#binding),*` |  |
-| `#(#binding)+`¹ |  |
-| `#(#binding),+`¹ |  |
+| `#(#binding)+`² |  |
+| `#(#binding),+`² |  |
 
 | Bound Groups |  |
 |-|-|
@@ -101,9 +99,16 @@ assert_eq!(parsed.value(), "Hello!");
 | `#binding: Struct@[]` |  |
 | `#:`-escapes |  |
 
-¹ Not specifically present in `quote`, but [required variadics are great.](https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2)
+¹  Note that all variadics are eager beyond the first [`TokenTree`] and only do very shallow speculative parsing! In practice, this means that for example parsing `++` as `#(+-)?++` will fail, as the first `+` "locks in" the optional phrase.
 
-² Currently without distinction regarding combinations like `=>` vs. `= >` and such. Whether this changes depends on implementation difficulty.
+[`TokenTree`]: https://docs.rs/proc-macro2/1/proc_macro2/enum.TokenTree.html
+
+² Not specifically present in [`quote`], but [required variadics are great.]
+
+[`quote`]: https://github.com/dtolnay/quote#rust-quasi-quoting
+[required variadics are great.]: https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2
+
+³ Currently without distinction regarding combinations like `=>` vs. `= >` and such. This *will* change eventually, along with a breaking semver change.
 
 ## License
 
