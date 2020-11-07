@@ -82,18 +82,3 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 
 	Ok(quote_spanned!(Span::mixed_site()=> { #output }))
 }
-
-fn _scratchpad(input: ParseStream) -> Result<()> {
-	input.parse::<Token![#]>()?;
-
-	let punct: proc_macro2::Punct = input
-		.parse()
-		.map_err(|error| syn::Error::new(error.span(), format_args!("Expected `{}`", '<')))?;
-	if punct.as_char() != '<' {
-		return Err(syn::Error::new(
-			punct.span(),
-			format_args!("Expected `{}`", '<'),
-		));
-	}
-	Ok(())
-}
