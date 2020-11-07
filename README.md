@@ -1,32 +1,32 @@
-# TODO_CRATE_NAME
+# unquote
 
-[![Lib.rs](https://img.shields.io/badge/Lib.rs-*-84f)](https://lib.rs/crates/TODO_CRATE_NAME)
-[![Crates.io](https://img.shields.io/crates/v/TODO_CRATE_NAME)](https://crates.io/crates/TODO_CRATE_NAME)
-[![Docs.rs](https://docs.rs/TODO_CRATE_NAME/badge.svg)](https://docs.rs/crates/TODO_CRATE_NAME)
+[![Lib.rs](https://img.shields.io/badge/Lib.rs-*-84f)](https://lib.rs/crates/unquote)
+[![Crates.io](https://img.shields.io/crates/v/unquote)](https://crates.io/crates/unquote)
+[![Docs.rs](https://docs.rs/unquote/badge.svg)](https://docs.rs/crates/unquote)
 
 ![Rust 1.40.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.40.0&color=grey)
-[![Build Status](https://travis-ci.com/Tamschi/TODO_CRATE_NAME.svg?branch=develop)](https://travis-ci.com/Tamschi/TODO_CRATE_NAME/branches)
-![Crates.io - License](https://img.shields.io/crates/l/TODO_CRATE_NAME/0.0.1)
+[![Build Status](https://travis-ci.com/Tamschi/unquote.svg?branch=develop)](https://travis-ci.com/Tamschi/unquote/branches)
+![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.1)
 
-[![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/TODO_CRATE_NAME)
-[![open issues](https://img.shields.io/github/issues-raw/Tamschi/TODO_CRATE_NAME)](https://github.com/Tamschi/TODO_CRATE_NAME/issues)
-[![open pull requests](https://img.shields.io/github/issues-pr-raw/Tamschi/TODO_CRATE_NAME)](https://github.com/Tamschi/TODO_CRATE_NAME/pulls)
-[![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/TODO_CRATE_NAME.svg)](https://web.crev.dev/rust-reviews/crate/TODO_CRATE_NAME/)
+[![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/unquote)
+[![open issues](https://img.shields.io/github/issues-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/issues)
+[![open pull requests](https://img.shields.io/github/issues-pr-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/pulls)
+[![crev reviews](https://web.crev.dev/rust-reviews/badge/crev_count/unquote.svg)](https://web.crev.dev/rust-reviews/crate/unquote/)
 
-TODO_README_DESCRIPTION
+Reverse quote macros... that is: Macros to parse input from a ParseStream according to a given pattern.
 
 ## Installation
 
 Please use [cargo-edit](https://crates.io/crates/cargo-edit) to always add the latest version of this library:
 
 ```cmd
-cargo add TODO_CRATE_NAME
+cargo add unquote
 ```
 
 ## Example
 
 ```rust
-TODO_EXAMPLE
+// TODO_EXAMPLE
 ```
 
 ## License
@@ -52,7 +52,7 @@ dual licensed as above, without any additional terms or conditions.
 
 ## Versioning
 
-`TODO_CRATE_NAME` strictly follows [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) with the following exceptions:
+`unquote` strictly follows [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) with the following exceptions:
 
 * The minor version will not reset to 0 on major version changes (except for v1).  
 Consider it the global feature level.

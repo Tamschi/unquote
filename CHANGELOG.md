@@ -1,7 +1,7 @@
-# TODO_CRATE_NAME Changelog
+# unquote Changelog
 
 ## 0.0.1
 
-TODO_YEAR-TODO_MONTH-TODO_DAY
+2020-TODO_MONTH-TODO_DAY
 
 Initial unstable release

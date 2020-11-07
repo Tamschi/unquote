@@ -1,15 +1,15 @@
 [package]
-name = "TODO_CRATE_NAME"
+name = "unquote"
 version = "0.0.1"
 authors = ["Tamme Schichler <tamme@schichler.dev>"]
 edition = "2018"
-description = "TODO_DESCRIPTION"
+description = "Reverse quote macros... that is: Macros to parse input from a ParseStream according to a given pattern."
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/Tamschi/TODO_CRATE_NAME"
-homepage = "https://github.com/Tamschi/TODO_CRATE_NAME/tree/v0.0.1"
-documentation = "https://docs.rs/TODO_CRATE_NAME/0.0.1"
-keywords = [TODO]
-categories = [TODO]
+repository = "https://github.com/Tamschi/unquote"
+homepage = "https://github.com/Tamschi/unquote/tree/v0.0.1"
+documentation = "https://docs.rs/unquote/0.0.1"
+keywords = ["syn"]
+categories = ["development-tools::procedural-macro-helpers"]
 readme = "README.md"
 include = [
 	"**/*.rs",
@@ -23,10 +23,13 @@ include = [
 publish = false
 
 [badges]
-travis-ci = { repository = "Tamschi/TODO_CRATE_NAME", branch = "develop" }
-is-it-maintained-issue-resolution = { repository = "Tamschi/TODO_CRATE_NAME" }
-is-it-maintained-open-issues = { repository = "Tamschi/TODO_CRATE_NAME" }
+travis-ci = { repository = "Tamschi/unquote", branch = "develop" }
+is-it-maintained-issue-resolution = { repository = "Tamschi/unquote" }
+is-it-maintained-open-issues = { repository = "Tamschi/unquote" }
 maintenance = { status = "experimental" }
+
+[lib]
+proc-macro = true
 
 [dev-dependencies]
 cargo-husky = "1.5.0"
