@@ -17,7 +17,7 @@ A reverse quote macro... that is: A macro to parse input from a [`ParseStream`] 
 
 [`ParseStream`]: https://docs.rs/syn/1/syn/parse/type.ParseStream.html
 
-> Note: This library is as work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
+> Note: This library is a work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
 >
 > This macro currently requires `syn` to be available in the current namespace with at least the `"parsing"` feature enabled. This should get fixed with the next larger refactor.
 
