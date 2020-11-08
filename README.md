@@ -89,21 +89,7 @@ fn main() -> Result<()> {
 | `#(#binding)+`² |  |
 | `#(#binding),+`² |  |
 
-| Bound Groups |  |
-|-|-|
-| `#binding@()` |  |
-| `#binding@{}` |  |
-| `#binding@[]` |  |
-| `#@`-escapes |  |
-
-| Bound Compounds |  |
-|-|-|
-| `#binding: Struct@()` |  |
-| `#binding: Struct@{}` |  |
-| `#binding: Struct@[]` |  |
-| `#:`-escapes |  |
-
-| Span Snapshots...? |  |
+| Span Snapshots |  |
 |-|-|
 | `#^span` |  |
 | `#$span` | ?⁴ |
@@ -111,6 +97,10 @@ fn main() -> Result<()> {
 | Positional Bindings...?⁵ |  |
 |-|-|
 | `#0` |  |
+
+| Utility Macros |  |
+|-|-|
+| `Unquotable`-derive⁶ |  |
 
 ¹  Note that all variadics are eager beyond the first [`TokenTree`] and only do very shallow speculative parsing! In practice, this means that for example parsing `++` as `#(+-)?++` will fail, as the first `+` "locks in" the optional phrase.
 
@@ -128,6 +118,8 @@ fn main() -> Result<()> {
 [`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
 
 ⁵ This would come in handy when using the macro for example in `if let` conditions (since the positional bindings would be returned only by value in the macro expression's result), and wouldn't interfere with named bindings. It's definitely more of a bonus feature though, in case it can indeed be added cleanly.
+
+⁶ This should work on `struct`s and implement `syn::Parse` and a custom trait that checks the first token.
 
 ## License
 
