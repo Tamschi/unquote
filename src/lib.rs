@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.1")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.2")]
 #![warn(clippy::pedantic)]
 
 #[cfg(doctest)]
@@ -10,7 +10,7 @@ mod readme {
 // However, I frankly don't understand how that one works, so it's proc-macro time.
 
 use call2_for_syn::call2;
-use proc_macro2::{Delimiter, Span, TokenStream, TokenTree};
+use proc_macro2::{Delimiter, Literal, Span, TokenStream, TokenTree};
 use quote::quote_spanned;
 use syn::{parse::ParseStream, Error, Expr, Ident, Result, Token};
 
@@ -21,11 +21,9 @@ pub fn unquote(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 		.into()
 }
 
-macro_rules! step_at {
+macro_rules! hygienic_spanned {
 	($input_span:expr => $($output:tt)*) => {
-		quote_spanned! {$input_span.resolved_at(Span::mixed_site())=> {
-			$($output)*
-		}}
+		quote_spanned!($input_span.resolved_at(Span::mixed_site())=> $($output)*)
 	};
 }
 
@@ -60,18 +58,23 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 						.ident()
 						.ok_or_else(|| Error::new(input.span(), "Expected identifier"))?;
 					input = next;
-					step_at! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
+					hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
 						#placeholder = #input_ident.parse()?;
 					}
 				}
-				char => step_at! {punct.span()=>
+				_char => hygienic_spanned! {punct.span()=>
 					//TODO?: Spacing
-					let punct: syn::Token![#punct] = #input_ident
-						.parse()
-						.map_err(|error| syn::Error::new(error.span(), format_args!("Expected `{}`", #char)))?;
+					let punct: syn::Token![#punct] = #input_ident.parse()?;
 				},
 			},
-			TokenTree::Literal(_) => todo!("literal"),
+			TokenTree::Literal(literal) => {
+				let message = Literal::string(&format!("Expected `{}`", literal.to_string()));
+				hygienic_spanned! {literal.span()=>
+					if #input_ident.parse::<syn::Lit>()? != syn::parse2(quote!(#literal)).unwrap() {
+						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
+					}
+				}
+			}
 		};
 		output.extend(step);
 	}

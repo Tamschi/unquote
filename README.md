@@ -6,7 +6,7 @@
 
 ![Rust 1.45.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.45.0&color=grey)
 [![Build Status](https://travis-ci.com/Tamschi/unquote.svg?branch=unstable)](https://travis-ci.com/Tamschi/unquote/branches)
-![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.1)
+![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.2)
 
 [![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/unquote)
 [![open issues](https://img.shields.io/github/issues-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/issues)
@@ -17,9 +17,9 @@ A reverse quote macro... that is: A macro to parse input from a [`ParseStream`] 
 
 [`ParseStream`]: https://docs.rs/syn/1/syn/parse/type.ParseStream.html
 
-> Note: This library is as work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
+> Note: This library is a work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
 >
-> This macro currently requires `syn` to be available in the current namespace with at least the `"parsing"` feature enabled. This should get fixed with the next larger refactor.
+> This macro currently requires `syn` to be available in the current namespace with at least the `"extra-traits"` and `"parsing"` features enabled. This should get fixed with the next larger refactor.
 
 ## Installation
 
@@ -37,27 +37,27 @@ use quote::quote;
 use syn::{LitStr, parse::ParseStream, Result};
 use unquote::unquote;
 
-# fn main() -> Result<()> {
-// Sample input
-let tokens = quote!(<!-- "Hello!" -->);
+fn main() -> Result<()> {
+  // Sample input
+  let tokens = quote!(<!-- "Hello!" -->);
 
-// Analogous to a parser implementation with `syn`:
-fn parser_function(input: ParseStream) -> Result<LitStr> {
-  // Declare bindings ahead of time.
-  // Rust can usually infer the type.
-  let parsed;
+  // Analogous to a parser implementation with `syn`:
+  fn parser_function(input: ParseStream) -> Result<LitStr> {
+    // Declare bindings ahead of time.
+    // Rust can usually infer the type.
+    let parsed;
 
-  // This uses the ? operator internally -
-  // It needs to be inside a `Result`-returning function.
-  unquote!(input, <!-- #parsed -->);
+    // This uses the ? operator internally -
+    // It needs to be inside a `Result`-returning function.
+    unquote!(input, <!-- #parsed -->);
 
-  Ok(parsed)
+    Ok(parsed)
+  }
+
+  let parsed = call2(tokens, parser_function)?;
+  assert_eq!(parsed.value(), "Hello!");
+  Ok(())
 }
-
-let parsed = call2(tokens, parser_function)?;
-assert_eq!(parsed.value(), "Hello!");
-# Ok(())
-# }
 ```
 
 ## Implementation Status
@@ -66,9 +66,9 @@ assert_eq!(parsed.value(), "Hello!");
 
 | Tokens |  |
 |-|-|
-| Punct | ✔³ |
+| Punct | 🗸³ |
 | Ident |  |
-| Literal |  |
+| Literal | ✔ |
 
 | Bindings |  |
 |-|-|
@@ -103,6 +103,15 @@ assert_eq!(parsed.value(), "Hello!");
 | `#binding: Struct@[]` |  |
 | `#:`-escapes |  |
 
+| Span Snapshots...? |  |
+|-|-|
+| `#^span` |  |
+| `#$span` | ?⁴ |
+
+| Positional Bindings...?⁵ |  |
+|-|-|
+| `#0` |  |
+
 ¹  Note that all variadics are eager beyond the first [`TokenTree`] and only do very shallow speculative parsing! In practice, this means that for example parsing `++` as `#(+-)?++` will fail, as the first `+` "locks in" the optional phrase.
 
 [`TokenTree`]: https://docs.rs/proc-macro2/1/proc_macro2/enum.TokenTree.html
@@ -113,6 +122,12 @@ assert_eq!(parsed.value(), "Hello!");
 [required variadics are great.]: https://blog.berkin.me/variadics-in-rant-4-and-why-i-think-theyre-better-ckgmrxa2200t9o9s10v7o0dh2
 
 ³ Currently without distinction regarding combinations like `=>` vs. `= >` and such. This *will* change eventually, along with a breaking semver change.
+
+⁴ I'm not yet sure how cleanly capturing spanning [`Span`]s would be, or how viable doing so is on stable.
+
+[`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
+
+⁵ This would come in handy when using the macro for example in `if let` conditions (since the positional bindings would be returned only by value in the macro expression's result), and wouldn't interfere with named bindings. It's definitely more of a bonus feature though, in case it can indeed be added cleanly.
 
 ## License
 
