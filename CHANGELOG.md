@@ -1,8 +1,8 @@
 # unquote Changelog
 
-## next
+## 0.0.2
 
-TODO: Date
+2020-11-08
 
 * README and CHANGELOG fixes
 * Implemented literals
