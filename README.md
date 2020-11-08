@@ -19,7 +19,7 @@ A reverse quote macro... that is: A macro to parse input from a [`ParseStream`] 
 
 > Note: This library is a work in progress. While I don't expect large breaking changes to the syntax, there are missing features and error messages aren't always great yet.
 >
-> This macro currently requires `syn` to be available in the current namespace with at least the `"parsing"` feature enabled. This should get fixed with the next larger refactor.
+> This macro currently requires `syn` to be available in the current namespace with at least the `"extra-traits"` and `"parsing"` features enabled. This should get fixed with the next larger refactor.
 
 ## Installation
 
@@ -66,9 +66,9 @@ fn main() -> Result<()> {
 
 | Tokens |  |
 |-|-|
-| Punct | ✔³ |
+| Punct | 🗸³ |
 | Ident |  |
-| Literal |  |
+| Literal | ✔ |
 
 | Bindings |  |
 |-|-|
@@ -106,7 +106,7 @@ fn main() -> Result<()> {
 | Span Snapshots...? |  |
 |-|-|
 | `#^span` |  |
-| `#$span` | ❔⁴ |
+| `#$span` | ?⁴ |
 
 | Positional Bindings...?⁵ |  |
 |-|-|

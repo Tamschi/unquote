@@ -36,7 +36,7 @@ proc-macro = true
 call2-for-syn = "1.0.0"
 proc-macro2 = "1.0.24"
 quote = "1.0.7"
-syn = { version = "1.0.48", features = ["parsing"], default-features = false }
+syn = { version = "1.0.48", features = ["extra-traits", "parsing"], default-features = false }
 
 
 [dev-dependencies]

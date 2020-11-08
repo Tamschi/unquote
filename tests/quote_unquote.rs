@@ -1,7 +1,10 @@
 use call2_for_syn::call2;
 use quote::quote;
-use syn::{LitStr, Result};
+use syn::{parse2, Lit, LitStr, Result};
 use unquote::unquote;
+
+//FIXME: These tests should also evaluate failures, but `call2` currently panics if not all input was parsed.
+// This should be fixed in the next version of call2-for-syn...
 
 #[test]
 fn html_comment() -> Result<()> {
@@ -21,6 +24,18 @@ fn multipunct() -> Result<()> {
 
 	call2(tokens, |input| {
 		unquote!(input, =>);
+		Result::Ok(())
+	})
+}
+
+#[test]
+fn literals() -> Result<()> {
+	let tokens = quote! (1 2.0 "drei" 4_i32 5_usize);
+
+	call2(tokens, |input| {
+		let five: Lit;
+		unquote!(input, 1 2.0 "drei" 4_i32 #five);
+		assert_eq!(five, Lit::Int(parse2(quote!(5_usize))?));
 		Result::Ok(())
 	})
 }

@@ -2,7 +2,10 @@
 
 ## next
 
+TODO: Date
+
 * README and CHANGELOG fixes
+* Implemented literals
 
 ## 0.0.1
 
