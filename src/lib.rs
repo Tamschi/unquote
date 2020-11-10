@@ -9,7 +9,7 @@ mod readme {
 // This crate is quite obviously intended as inverse of the `quote` crate.
 // However, I frankly don't understand how that one works, so it's proc-macro time.
 
-use proc_macro2::{Delimiter, Literal, Span, TokenStream, TokenTree};
+use proc_macro2::{Delimiter, Literal, Spacing, Span, TokenStream, TokenTree};
 use quote::quote_spanned;
 use syn::{
 	parse::{ParseStream, Parser},
@@ -54,12 +54,8 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 
 	input.parse::<Token![,]>()?;
 
-	let input_stream = input;
-	let mut input = input_stream.cursor();
-	while let Some((token, next)) = input.token_tree() {
-		input = next;
-
-		let step: TokenStream = match token {
+	while !input.is_empty() {
+		let step: TokenStream = match input.parse().unwrap() {
 			TokenTree::Group(group) => match group.delimiter() {
 				Delimiter::Parenthesis => grammar_todo!(group, "()"),
 				Delimiter::Brace => grammar_todo!(group, "{}"),
@@ -78,17 +74,44 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 			}
 			TokenTree::Punct(punct) => match punct.as_char() {
 				'#' => {
-					let (placeholder, next) = input
-						.ident()
-						.ok_or_else(|| Error::new(input.span(), "Expected identifier"))?;
-					input = next;
-					hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
-						#placeholder = #input_ident.parse()?;
+					#[allow(clippy::map_err_ignore)]
+					match input.parse().map_err(|_| {
+						Error::new(
+							input.span(),
+							"Unexpected end of macro input: Expected Parse identifier, Span identifier written as lifetime or joined `#`",
+						)
+					})? {
+						TokenTree::Ident(placeholder) => {
+							hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
+								#placeholder = #input_ident.parse()?;
+							}
+						}
+						TokenTree::Punct(number_sign) if punct.spacing() == Spacing::Joint && number_sign.as_char() == '#' => {
+							hygienic_spanned! {punct.span().join(number_sign.span()).unwrap_or_else(||number_sign.span())=>
+								#input_ident.parse::<syn::Token![#]>()?;
+							}
+						}
+						TokenTree::Punct(apostrophe)
+							if punct.spacing() == Spacing::Alone
+								&& apostrophe.as_char() == '\'' && apostrophe.spacing()
+								== Spacing::Joint =>
+						{
+							let placeholder: Ident = input.parse()?;
+							hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(||placeholder.span())=>
+								#placeholder = #input_ident.span();
+							}
+						}
+						other => {
+							return Err(Error::new_spanned(
+								other,
+								"Expected Parse identifier, Span identifier written as lifetime or joined `#`",
+							))
+						}
 					}
 				}
 				_char => hygienic_spanned! {punct.span()=>
-					//TODO?: Spacing
-					let punct: syn::Token![#punct] = #input_ident.parse()?;
+					//TODO: Spacing
+					#input_ident.parse::<syn::Token![#punct]>()?;
 				},
 			},
 			TokenTree::Literal(literal) => {
@@ -102,10 +125,6 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 		};
 		output.extend(step);
 	}
-
-	// Catch up input.
-	//TODO: This should be handled more nicely...
-	input_stream.parse::<TokenStream>().unwrap();
 
 	Ok(quote_spanned!(Span::mixed_site()=> { #output }))
 }

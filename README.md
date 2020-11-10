@@ -74,7 +74,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 | Bindings |  |
 |-|-|
 | `#binding` | ✔ |
-| `##`-escapes |  |
+| `##`-escapes | ✔ |
 
 | Groups |  |
 |-|-|
@@ -92,8 +92,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 | Span Snapshots |  |
 |-|-|
-| `#^span` |  |
-| `#$span` | ?⁴ |
+| `#'span`⁴ |  |
+| `#^'span`⁴ |  |
+| `#$'span`⁴ |  |
 
 | Positional Bindings...?⁵ |  |
 |-|-|
@@ -102,6 +103,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 | Utility Macros |  |
 |-|-|
 | `Unquotable`-derive⁶ |  |
+
+| Helpers |  |
+|-|-|
+| `Keyword` |  |
+| `AnyIdent` |  |
 
 ¹  Note that all variadics are eager beyond the first [`TokenTree`] and only do very shallow speculative parsing! In practice, this means that for example parsing `++` as `#(+-)?++` will fail, as the first `+` "locks in" the optional phrase.
 
@@ -114,7 +120,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 ³ Currently without distinction regarding combinations like `=>` vs. `= >` and such. This *will* change eventually, along with a breaking semver change.
 
-⁴ I'm not yet sure how cleanly capturing spanning [`Span`]s would be, or how viable doing so is on stable.
+⁴ Denoting [`Span`]s as lifetimes is a bit unusual, but nicely highlights them with a different colour.
 
 [`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
 
