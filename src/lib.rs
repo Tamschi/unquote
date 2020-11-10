@@ -41,6 +41,7 @@ macro_rules! grammar_todo {
 	};
 }
 
+//TODO: Make errors specific even if the token type is mismatched outright.
 fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 	let parse_stream: Expr = input.parse()?;
 
@@ -65,7 +66,16 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 				Delimiter::Bracket => grammar_todo!(group, "[]"),
 				Delimiter::None => Parser::parse2(unquote_inner, group.stream())?,
 			},
-			TokenTree::Ident(ident) => grammar_todo!(ident),
+			TokenTree::Ident(ident) => {
+				let message = Literal::string(&format!("Expected `{}`", ident.to_string()));
+				hygienic_spanned! {ident.span()=>
+					if #input_ident.call(<syn::Ident as syn::ext::IdentExt>::parse_any)?
+						!= syn::parse::Parser::parse2(<syn::Ident as syn::ext::IdentExt>::parse_any, quote!(#ident)).unwrap()
+					{
+						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
+					}
+				}
+			}
 			TokenTree::Punct(punct) => match punct.as_char() {
 				'#' => {
 					let (placeholder, next) = input

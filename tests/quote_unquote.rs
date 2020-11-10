@@ -1,6 +1,6 @@
 use call2_for_syn::call2_allow_incomplete;
 use quote::quote;
-use syn::{parse2, Lit, LitStr, Result};
+use syn::{parse2, Ident, Lit, LitStr, Result};
 use unquote::unquote;
 
 //FIXME: These tests should also evaluate failures, but `call2` currently panics if not all input was parsed.
@@ -46,6 +46,37 @@ fn literal_mismatch() -> Result<()> {
 
 	call2_allow_incomplete(tokens, |input| {
 		unquote!(input, 2);
+		Result::Ok(())
+	})
+	.unwrap_err();
+
+	Ok(())
+}
+
+#[test]
+fn idents() -> Result<()> {
+	let tokens = quote! (static for okay);
+
+	call2_allow_incomplete(tokens, |input| {
+		let okay: Ident;
+		unquote!(input, static for #okay);
+		assert_eq!(okay, parse2::<Ident>(quote!(okay))?);
+		Result::Ok(())
+	})
+}
+
+#[test]
+fn ident_mismatch() -> Result<()> {
+	let tokens = quote! (static for okay);
+
+	call2_allow_incomplete(tokens.clone(), |input| {
+		unquote!(input, for static okay);
+		Result::Ok(())
+	})
+	.unwrap_err();
+
+	call2_allow_incomplete(tokens, |input| {
+		unquote!(input, static for mismatched);
 		Result::Ok(())
 	})
 	.unwrap_err();

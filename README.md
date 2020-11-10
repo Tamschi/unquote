@@ -68,7 +68,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 | Tokens |  |
 |-|-|
 | Punct | 🗸³ |
-| Ident |  |
+| Ident | ✔ |
 | Literal | ✔ |
 
 | Bindings |  |

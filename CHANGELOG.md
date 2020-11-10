@@ -9,6 +9,7 @@ TODO: Date
 * Better errors
 * Better tests
 * Removed call2-for-syn dependence (except for testing)
+* Implemented identifiers
 
 ## 0.0.2
 
