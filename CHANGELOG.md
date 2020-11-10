@@ -1,5 +1,15 @@
 # unquote Changelog
 
+<!-- markdownlint-disable no-trailing-punctuation -->
+
+## next
+
+TODO: Date
+
+* Better errors
+* Better tests
+* Removed call2-for-syn dependence (except for testing)
+
 ## 0.0.2
 
 2020-11-08

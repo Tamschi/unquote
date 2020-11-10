@@ -32,17 +32,18 @@ cargo add unquote
 ## Example
 
 ```rust
-use call2_for_syn::call2;
+use call2_for_syn::call2_strict;
 use quote::quote;
-use syn::{LitStr, parse::ParseStream, Result};
+use std::error::Error;
+use syn::{LitStr, parse::ParseStream};
 use unquote::unquote;
 
-fn main() -> Result<()> {
+fn main() -> Result<(), Box<dyn Error>> {
   // Sample input
   let tokens = quote!(<!-- "Hello!" -->);
 
   // Analogous to a parser implementation with `syn`:
-  fn parser_function(input: ParseStream) -> Result<LitStr> {
+  fn parser_function(input: ParseStream) -> syn::Result<LitStr> {
     // Declare bindings ahead of time.
     // Rust can usually infer the type.
     let parsed;
@@ -54,7 +55,7 @@ fn main() -> Result<()> {
     Ok(parsed)
   }
 
-  let parsed = call2(tokens, parser_function)?;
+  let parsed = call2_strict(tokens, parser_function)??;
   assert_eq!(parsed.value(), "Hello!");
   Ok(())
 }

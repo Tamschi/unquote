@@ -1,4 +1,4 @@
-use call2_for_syn::call2;
+use call2_for_syn::call2_allow_incomplete;
 use quote::quote;
 use syn::{parse2, Lit, LitStr, Result};
 use unquote::unquote;
@@ -10,7 +10,7 @@ use unquote::unquote;
 fn html_comment() -> Result<()> {
 	let tokens = quote!(<!-- "Hello!" -->);
 
-	call2(tokens, |input| {
+	call2_allow_incomplete(tokens, |input| {
 		let reparsed: LitStr;
 		unquote!(input, <!-- #reparsed -->);
 		assert_eq!(reparsed.value(), "Hello!");
@@ -22,7 +22,7 @@ fn html_comment() -> Result<()> {
 fn multipunct() -> Result<()> {
 	let tokens = quote!(=>);
 
-	call2(tokens, |input| {
+	call2_allow_incomplete(tokens, |input| {
 		unquote!(input, =>);
 		Result::Ok(())
 	})
@@ -32,10 +32,23 @@ fn multipunct() -> Result<()> {
 fn literals() -> Result<()> {
 	let tokens = quote! (1 2.0 "drei" 4_i32 5_usize);
 
-	call2(tokens, |input| {
+	call2_allow_incomplete(tokens, |input| {
 		let five: Lit;
 		unquote!(input, 1 2.0 "drei" 4_i32 #five);
 		assert_eq!(five, Lit::Int(parse2(quote!(5_usize))?));
 		Result::Ok(())
 	})
+}
+
+#[test]
+fn literal_mismatch() -> Result<()> {
+	let tokens = quote! (1 2.0 "drei" 4_i32 5_usize);
+
+	call2_allow_incomplete(tokens, |input| {
+		unquote!(input, 2);
+		Result::Ok(())
+	})
+	.unwrap_err();
+
+	Ok(())
 }

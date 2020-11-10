@@ -9,14 +9,16 @@ mod readme {
 // This crate is quite obviously intended as inverse of the `quote` crate.
 // However, I frankly don't understand how that one works, so it's proc-macro time.
 
-use call2_for_syn::call2;
 use proc_macro2::{Delimiter, Literal, Span, TokenStream, TokenTree};
 use quote::quote_spanned;
-use syn::{parse::ParseStream, Error, Expr, Ident, Result, Token};
+use syn::{
+	parse::{ParseStream, Parser},
+	Error, Expr, Ident, Result, Token,
+};
 
 #[proc_macro]
 pub fn unquote(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-	call2(input.into(), |input| unquote_inner(input))
+	Parser::parse2(unquote_inner, input.into())
 		.unwrap_or_else(|error| error.to_compile_error())
 		.into()
 }
@@ -24,6 +26,18 @@ pub fn unquote(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
 macro_rules! hygienic_spanned {
 	($input_span:expr => $($output:tt)*) => {
 		quote_spanned!($input_span.resolved_at(Span::mixed_site())=> $($output)*)
+	};
+}
+
+macro_rules! grammar_todo {
+	($token:ident) => {
+		grammar_todo!($token, stringify!($token))
+	};
+	($token:ident, $name:expr) => {
+		return Err(Error::new_spanned(
+			$token,
+			format_args!("Not yet implemented: {}", $name),
+			));
 	};
 }
 
@@ -46,12 +60,12 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 
 		let step: TokenStream = match token {
 			TokenTree::Group(group) => match group.delimiter() {
-				Delimiter::Parenthesis => todo!("parenthesis"),
-				Delimiter::Brace => todo!("brace"),
-				Delimiter::Bracket => todo!("bracket"),
-				Delimiter::None => call2(group.stream(), unquote_inner)?,
+				Delimiter::Parenthesis => grammar_todo!(group, "()"),
+				Delimiter::Brace => grammar_todo!(group, "{}"),
+				Delimiter::Bracket => grammar_todo!(group, "[]"),
+				Delimiter::None => Parser::parse2(unquote_inner, group.stream())?,
 			},
-			TokenTree::Ident(_ident) => todo!("ident"),
+			TokenTree::Ident(ident) => grammar_todo!(ident),
 			TokenTree::Punct(punct) => match punct.as_char() {
 				'#' => {
 					let (placeholder, next) = input
