@@ -6,7 +6,7 @@
 
 ![Rust 1.45.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.45.0&color=grey)
 [![Build Status](https://travis-ci.com/Tamschi/unquote.svg?branch=unstable)](https://travis-ci.com/Tamschi/unquote/branches)
-![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.2)
+![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.3)
 
 [![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/unquote)
 [![open issues](https://img.shields.io/github/issues-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/issues)
@@ -32,17 +32,18 @@ cargo add unquote
 ## Example
 
 ```rust
-use call2_for_syn::call2;
+use call2_for_syn::call2_strict;
 use quote::quote;
-use syn::{LitStr, parse::ParseStream, Result};
+use std::error::Error;
+use syn::{LitStr, parse::ParseStream};
 use unquote::unquote;
 
-fn main() -> Result<()> {
+fn main() -> Result<(), Box<dyn Error>> {
   // Sample input
   let tokens = quote!(<!-- "Hello!" -->);
 
   // Analogous to a parser implementation with `syn`:
-  fn parser_function(input: ParseStream) -> Result<LitStr> {
+  fn parser_function(input: ParseStream) -> syn::Result<LitStr> {
     // Declare bindings ahead of time.
     // Rust can usually infer the type.
     let parsed;
@@ -54,7 +55,7 @@ fn main() -> Result<()> {
     Ok(parsed)
   }
 
-  let parsed = call2(tokens, parser_function)?;
+  let parsed = call2_strict(tokens, parser_function)??;
   assert_eq!(parsed.value(), "Hello!");
   Ok(())
 }
@@ -67,13 +68,13 @@ fn main() -> Result<()> {
 | Tokens |  |
 |-|-|
 | Punct | 🗸³ |
-| Ident |  |
+| Ident | ✔ |
 | Literal | ✔ |
 
 | Bindings |  |
 |-|-|
 | `#binding` | ✔ |
-| `##`-escapes |  |
+| `##`-escapes | ✔ |
 
 | Groups |  |
 |-|-|
@@ -89,28 +90,24 @@ fn main() -> Result<()> {
 | `#(#binding)+`² |  |
 | `#(#binding),+`² |  |
 
-| Bound Groups |  |
+| Span Snapshots |  |
 |-|-|
-| `#binding@()` |  |
-| `#binding@{}` |  |
-| `#binding@[]` |  |
-| `#@`-escapes |  |
-
-| Bound Compounds |  |
-|-|-|
-| `#binding: Struct@()` |  |
-| `#binding: Struct@{}` |  |
-| `#binding: Struct@[]` |  |
-| `#:`-escapes |  |
-
-| Span Snapshots...? |  |
-|-|-|
-| `#^span` |  |
-| `#$span` | ?⁴ |
+| `#'span`⁴ |  |
+| `#^'span`⁴ |  |
+| `#$'span`⁴ |  |
 
 | Positional Bindings...?⁵ |  |
 |-|-|
 | `#0` |  |
+
+| Utility Macros |  |
+|-|-|
+| `Unquotable`-derive⁶ |  |
+
+| Helpers |  |
+|-|-|
+| `Keyword` |  |
+| `AnyIdent` |  |
 
 ¹  Note that all variadics are eager beyond the first [`TokenTree`] and only do very shallow speculative parsing! In practice, this means that for example parsing `++` as `#(+-)?++` will fail, as the first `+` "locks in" the optional phrase.
 
@@ -123,11 +120,13 @@ fn main() -> Result<()> {
 
 ³ Currently without distinction regarding combinations like `=>` vs. `= >` and such. This *will* change eventually, along with a breaking semver change.
 
-⁴ I'm not yet sure how cleanly capturing spanning [`Span`]s would be, or how viable doing so is on stable.
+⁴ Denoting [`Span`]s as lifetimes is a bit unusual, but nicely highlights them with a different colour.
 
 [`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
 
 ⁵ This would come in handy when using the macro for example in `if let` conditions (since the positional bindings would be returned only by value in the macro expression's result), and wouldn't interfere with named bindings. It's definitely more of a bonus feature though, in case it can indeed be added cleanly.
+
+⁶ This should work on `struct`s and implement `syn::Parse` and a custom trait that checks the first token.
 
 ## License
 
