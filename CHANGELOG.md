@@ -2,16 +2,18 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
-## next
+## 0.0.3
 
-TODO: Date
+2020-11-10
 
-* Better errors
-* Better tests
-* Removed call2-for-syn dependence (except for testing)
-* Implemented identifiers
-* Implemented basic [`Span`] captures
-* Implemented `#` escape
+* Features:
+  * Implemented identifiers
+  * Implemented basic [`Span`] captures
+  * Implemented `#` escape
+* Revisions:
+  * Better errors
+  * Better tests
+  * Removed call2-for-syn dependence (except for testing)
 
 [`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
 
