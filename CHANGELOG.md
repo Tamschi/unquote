@@ -2,9 +2,9 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
-## next
+## 0.0.4
 
-TODO: Date
+2020-11-13
 
 * Features:
   * Implemented [`Span`] range captures (best effort)
