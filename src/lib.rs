@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.4")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.5")]
 #![warn(clippy::pedantic)]
 
 #[cfg(doctest)]
@@ -44,10 +44,18 @@ macro_rules! grammar_todo {
 }
 
 fn unquote_outer(input: ParseStream) -> Result<TokenStream> {
+	let parse_stream: Expr = input.parse()?;
+
+	input.parse::<Token![,]>()?;
+
+	let input_ident = Ident::new("input", Span::mixed_site());
+
 	let mut declare_up_front = HashSet::new();
-	let output = unquote_inner(input, &mut declare_up_front)?;
+	let output = unquote_inner(input, &input_ident, &mut declare_up_front)?;
 	let declare_up_front = declare_up_front.into_iter();
 	Ok(quote_spanned!(Span::mixed_site()=> {
+		let #input_ident = #parse_stream;
+		let mut prev_span = #input_ident.cursor().span();
 		#(let #declare_up_front;)*
 		#output
 	}))
@@ -55,17 +63,12 @@ fn unquote_outer(input: ParseStream) -> Result<TokenStream> {
 
 //TODO: Make errors specific even if the token type is mismatched outright.
 #[allow(clippy::too_many_lines)]
-fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> Result<TokenStream> {
-	let parse_stream: Expr = input.parse()?;
-
+fn unquote_inner(
+	input: ParseStream,
+	input_ident: &Ident,
+	declare_up_front: &mut HashSet<Ident>,
+) -> Result<TokenStream> {
 	let mut output = TokenStream::new();
-
-	let input_ident = Ident::new("input", Span::mixed_site());
-	output.extend(quote_spanned! {Span::mixed_site()=>
-		let #input_ident = #parse_stream;
-	});
-
-	input.parse::<Token![,]>()?;
 
 	while !input.is_empty() {
 		let step: TokenStream = match input.parse().unwrap() {
@@ -74,7 +77,7 @@ fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> R
 				Delimiter::Brace => grammar_todo!(group, "{}"),
 				Delimiter::Bracket => grammar_todo!(group, "[]"),
 				Delimiter::None =>
-					call2_strict(group.stream(), |input| unquote_inner(input, declare_up_front))
+					call2_strict(group.stream(), |input| unquote_inner(input,input_ident, declare_up_front))
 					.unwrap_or_else(|_| Err(Error::new(group.span_close(), "Unexpected end of undelimited group")))?,
 			},
 			TokenTree::Ident(ident) => {
@@ -99,11 +102,12 @@ fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> R
 						TokenTree::Ident(placeholder) => {
 							hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
 								#placeholder = #input_ident.parse()?;
+								prev_span = syn::spanned::Spanned::span(&#placeholder);
 							}
 						}
 						TokenTree::Punct(number_sign) if punct.spacing() == Spacing::Joint && number_sign.as_char() == '#' => {
 							hygienic_spanned! {punct.span().join(number_sign.span()).unwrap_or_else(||number_sign.span())=>
-								#input_ident.parse::<syn::Token![#]>()?;
+								prev_span = #input_ident.parse::<syn::Token![#]>()?.span;
 							}
 						}
 						TokenTree::Punct(apostrophe)
@@ -122,7 +126,10 @@ fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> R
 						{
 							let apostrophe: TokenTree= input.parse()?;
 							match apostrophe {
-								TokenTree::Punct(apostrophe) if apostrophe.as_char()=='\''&&apostrophe.spacing()==Spacing::Joint=>{
+								TokenTree::Punct(apostrophe)
+									if apostrophe.as_char() == '\''
+										&&apostrophe.spacing() == Spacing::Joint =>
+								{
 									let identifier = input.parse::<Ident>()?;
 									let hygienic_identifier = Ident::new(&identifier.to_string(), identifier.span().resolved_at(Span::mixed_site()));
 									if !declare_up_front.insert(hygienic_identifier.clone()) {
@@ -142,11 +149,14 @@ fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> R
 						{
 							let apostrophe: TokenTree = input.parse()?;
 							match apostrophe {
-								TokenTree::Punct(apostrophe) if apostrophe.as_char()=='\''&&apostrophe.spacing()==Spacing::Joint=>{
+								TokenTree::Punct(apostrophe)
+									if apostrophe.as_char() == '\''
+										&& apostrophe.spacing() == Spacing::Joint =>
+								{
 									let identifier = input.parse::<Ident>()?;
 									let hygienic_identifier = Ident::new(&identifier.to_string(), identifier.span().resolved_at(Span::mixed_site()));
 									hygienic_spanned!(punct.span().join(identifier.span()).unwrap_or_else(|| identifier.span())=>
-										#identifier = #hygienic_identifier.join(#input_ident.cursor().span()).unwrap_or(#hygienic_identifier);
+										#identifier = #hygienic_identifier.join(prev_span).unwrap_or(#hygienic_identifier);
 									)
 								}
 								other => {
@@ -164,14 +174,17 @@ fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> R
 				}
 				_char => hygienic_spanned! {punct.span()=>
 					//TODO: Spacing
-					#input_ident.parse::<syn::Token![#punct]>()?;
+					prev_span = #input_ident.parse::<syn::Token![#punct]>()?.span;
 				},
 			},
 			TokenTree::Literal(literal) => {
 				let message = Literal::string(&format!("Expected `{}`", literal.to_string()));
 				hygienic_spanned! {literal.span()=>
-					if #input_ident.parse::<syn::Lit>()? != syn::parse2(quote!(#literal)).unwrap() {
+					let parsed = #input_ident.parse::<syn::Lit>()?;
+					if parsed != syn::parse2(quote!(#literal)).unwrap() {
 						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
+					} else {
+						prev_span = parsed.span();
 					}
 				}
 			}

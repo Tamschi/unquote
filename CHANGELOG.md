@@ -2,6 +2,18 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
+## 0.0.5
+
+2020-11-14
+
+* Fixed
+  * `#$'span` now correctly captures a [`Span`] *up to but not past* this expression. (broken since 0.0.4)
+  * Fixed group recursion. (broken since 0.0.1)
+* Revisions
+  * Revised CHANGELOG
+
+[`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
+
 ## 0.0.4
 
 2020-11-13
@@ -10,6 +22,7 @@
   * Implemented [`Span`] range captures (best effort)
 * Revisions:
   * Ticked basic [`Span`] captures in README
+  * Readded call2-for-syn dependence due better type inference
 
 [`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
 
@@ -32,8 +45,10 @@
 
 2020-11-08
 
-* README and CHANGELOG fixes
-* Implemented literals
+* Features:
+  * Implemented literals
+* Revisions:
+  * README and CHANGELOG fixes
 
 ## 0.0.1
 
