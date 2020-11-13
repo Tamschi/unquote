@@ -111,6 +111,7 @@ fn number_sign_escape() -> Result<()> {
 	.unwrap()
 }
 
+//TODO: Test more thoroughly which spans are captured!
 #[test]
 fn span_range() -> Result<()> {
 	let tokens = quote!(.);

@@ -4,8 +4,13 @@
 
 ## next
 
+* Fixed
+  * `#$'span` now correctly captures a [`Span`] *up to but not past* this expression.
+  * Fixed group recursion.
 * Revisions
   * Revised CHANGELOG
+
+[`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
 
 ## 0.0.4
 
