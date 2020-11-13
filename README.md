@@ -90,11 +90,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 | `#(#binding)+`² |  |
 | `#(#binding),+`² |  |
 
-| Span Snapshots |  |
+| Span Captures |  |
 |-|-|
-| `#'span`⁴ |  |
-| `#^'span`⁴ |  |
-| `#$'span`⁴ |  |
+| `#'span`⁴ | ✔ |
+| `#^'span`⁴ | ✔ |
+| `#$'span`⁴ | ✔ |
 
 | Positional Bindings...?⁵ |  |
 |-|-|

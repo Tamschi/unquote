@@ -33,13 +33,13 @@ proc-macro = true
 
 # TODO: Re-export libraries!
 [dependencies]
+call2-for-syn = "2.0.3"
 proc-macro2 = "1.0.24"
 quote = "1.0.7"
 syn = { version = "1.0.48", features = ["extra-traits", "parsing"], default-features = false }
 
 
 [dev-dependencies]
-call2-for-syn = "2.0.3"
 cargo-husky = "1.5.0"
 doc-comment = "0.3.3"
 git_info = "0.1.2"
