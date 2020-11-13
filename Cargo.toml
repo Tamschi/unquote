@@ -1,13 +1,13 @@
 [package]
 name = "unquote"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Tamme Schichler <tamme@schichler.dev>"]
 edition = "2018"
 description = "A reverse quote macro... that is: A macro to parse input from a ParseStream according to a given pattern."
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/Tamschi/unquote"
-homepage = "https://github.com/Tamschi/unquote/tree/v0.0.3"
-documentation = "https://docs.rs/unquote/0.0.3"
+homepage = "https://github.com/Tamschi/unquote/tree/v0.0.4"
+documentation = "https://docs.rs/unquote/0.0.4"
 keywords = ["syn"]
 categories = ["development-tools::procedural-macro-helpers"]
 readme = "README.md"
@@ -32,13 +32,13 @@ proc-macro = true
 
 # TODO: Re-export libraries!
 [dependencies]
+call2-for-syn = "2.0.3"
 proc-macro2 = "1.0.24"
 quote = "1.0.7"
 syn = { version = "1.0.48", features = ["extra-traits", "parsing"], default-features = false }
 
 
 [dev-dependencies]
-call2-for-syn = "2.0.3"
 cargo-husky = "1.5.0"
 doc-comment = "0.3.3"
 git_info = "0.1.2"

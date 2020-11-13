@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.3")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.4")]
 #![warn(clippy::pedantic)]
 
 #[cfg(doctest)]
@@ -9,8 +9,10 @@ mod readme {
 // This crate is quite obviously intended as inverse of the `quote` crate.
 // However, I frankly don't understand how that one works, so it's proc-macro time.
 
+use call2_for_syn::call2_strict;
 use proc_macro2::{Delimiter, Literal, Spacing, Span, TokenStream, TokenTree};
 use quote::quote_spanned;
+use std::collections::HashSet;
 use syn::{
 	parse::{ParseStream, Parser},
 	Error, Expr, Ident, Result, Token,
@@ -18,7 +20,7 @@ use syn::{
 
 #[proc_macro]
 pub fn unquote(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-	Parser::parse2(unquote_inner, input.into())
+	Parser::parse2(unquote_outer, input.into())
 		.unwrap_or_else(|error| error.to_compile_error())
 		.into()
 }
@@ -41,8 +43,19 @@ macro_rules! grammar_todo {
 	};
 }
 
+fn unquote_outer(input: ParseStream) -> Result<TokenStream> {
+	let mut declare_up_front = HashSet::new();
+	let output = unquote_inner(input, &mut declare_up_front)?;
+	let declare_up_front = declare_up_front.into_iter();
+	Ok(quote_spanned!(Span::mixed_site()=> {
+		#(let #declare_up_front;)*
+		#output
+	}))
+}
+
 //TODO: Make errors specific even if the token type is mismatched outright.
-fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
+#[allow(clippy::too_many_lines)]
+fn unquote_inner(input: ParseStream, declare_up_front: &mut HashSet<Ident>) -> Result<TokenStream> {
 	let parse_stream: Expr = input.parse()?;
 
 	let mut output = TokenStream::new();
@@ -60,7 +73,9 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 				Delimiter::Parenthesis => grammar_todo!(group, "()"),
 				Delimiter::Brace => grammar_todo!(group, "{}"),
 				Delimiter::Bracket => grammar_todo!(group, "[]"),
-				Delimiter::None => Parser::parse2(unquote_inner, group.stream())?,
+				Delimiter::None =>
+					call2_strict(group.stream(), |input| unquote_inner(input, declare_up_front))
+					.unwrap_or_else(|_| Err(Error::new(group.span_close(), "Unexpected end of undelimited group")))?,
 			},
 			TokenTree::Ident(ident) => {
 				let message = Literal::string(&format!("Expected `{}`", ident.to_string()));
@@ -101,6 +116,44 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 								#placeholder = #input_ident.span();
 							}
 						}
+						TokenTree::Punct(caret)
+							if punct.spacing() == Spacing::Joint
+							&& caret.as_char() == '^' =>
+						{
+							let apostrophe: TokenTree= input.parse()?;
+							match apostrophe {
+								TokenTree::Punct(apostrophe) if apostrophe.as_char()=='\''&&apostrophe.spacing()==Spacing::Joint=>{
+									let identifier = input.parse::<Ident>()?;
+									let hygienic_identifier = Ident::new(&identifier.to_string(), identifier.span().resolved_at(Span::mixed_site()));
+									if !declare_up_front.insert(hygienic_identifier.clone()) {
+										return Err(Error::new(identifier.span(), format_args!("Duplicate Span start: `{}`", identifier)));
+									}
+									hygienic_spanned!(punct.span().join(identifier.span()).unwrap_or_else(|| identifier.span())=>
+										#hygienic_identifier = #input_ident.cursor().span();
+									)
+								}
+								other => {
+									return Err(Error::new_spanned(other, "Expected span identifier written as lifetime."));
+								}
+							}
+						}
+						TokenTree::Punct(dollar)
+							if punct.spacing() == Spacing::Joint && dollar.as_char() == '$' =>
+						{
+							let apostrophe: TokenTree = input.parse()?;
+							match apostrophe {
+								TokenTree::Punct(apostrophe) if apostrophe.as_char()=='\''&&apostrophe.spacing()==Spacing::Joint=>{
+									let identifier = input.parse::<Ident>()?;
+									let hygienic_identifier = Ident::new(&identifier.to_string(), identifier.span().resolved_at(Span::mixed_site()));
+									hygienic_spanned!(punct.span().join(identifier.span()).unwrap_or_else(|| identifier.span())=>
+										#identifier = #hygienic_identifier.join(#input_ident.cursor().span()).unwrap_or(#hygienic_identifier);
+									)
+								}
+								other => {
+									return Err(Error::new_spanned(other, "Expected span identifier written as lifetime."));
+								}
+							}
+						}
 						other => {
 							return Err(Error::new_spanned(
 								other,
@@ -126,5 +179,5 @@ fn unquote_inner(input: ParseStream) -> Result<TokenStream> {
 		output.extend(step);
 	}
 
-	Ok(quote_spanned!(Span::mixed_site()=> { #output }))
+	Ok(output)
 }

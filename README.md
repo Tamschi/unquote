@@ -6,7 +6,7 @@
 
 ![Rust 1.45.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.45.0&color=grey)
 [![Build Status](https://travis-ci.com/Tamschi/unquote.svg?branch=unstable)](https://travis-ci.com/Tamschi/unquote/branches)
-![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.3)
+![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.4)
 
 [![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/unquote)
 [![open issues](https://img.shields.io/github/issues-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/issues)
@@ -90,11 +90,11 @@ fn main() -> Result<(), Box<dyn Error>> {
 | `#(#binding)+`² |  |
 | `#(#binding),+`² |  |
 
-| Span Snapshots |  |
+| Span Captures |  |
 |-|-|
-| `#'span`⁴ |  |
-| `#^'span`⁴ |  |
-| `#$'span`⁴ |  |
+| `#'span`⁴ | ✔ |
+| `#^'span`⁴ | ✔ |
+| `#$'span`⁴ | ✔ |
 
 | Positional Bindings...?⁵ |  |
 |-|-|

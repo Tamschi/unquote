@@ -110,3 +110,17 @@ fn number_sign_escape() -> Result<()> {
 	})
 	.unwrap()
 }
+
+#[test]
+fn span_range() -> Result<()> {
+	let tokens = quote!(.);
+
+	let _: Span = call2_strict(tokens, |input| {
+		let span;
+		unquote!(input, #^'span . #$'span);
+		Result::Ok(span)
+	})
+	.unwrap()?;
+
+	Ok(())
+}

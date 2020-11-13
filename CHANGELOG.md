@@ -2,6 +2,17 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
+## 0.0.4
+
+2020-11-13
+
+* Features:
+  * Implemented [`Span`] range captures (best effort)
+* Revisions:
+  * Ticked basic [`Span`] captures in README
+
+[`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
+
 ## 0.0.3
 
 2020-11-10
@@ -15,7 +26,7 @@
   * Better tests
   * Removed call2-for-syn dependence (except for testing)
 
-[`Span`]: https://docs.rs/proc-macro2/1.0.24/proc_macro2/struct.Span.html
+[`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
 
 ## 0.0.2
 
