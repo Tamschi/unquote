@@ -2,11 +2,13 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
-## next
+## 0.0.5
+
+2020-11-14
 
 * Fixed
-  * `#$'span` now correctly captures a [`Span`] *up to but not past* this expression.
-  * Fixed group recursion.
+  * `#$'span` now correctly captures a [`Span`] *up to but not past* this expression. (broken since 0.0.4)
+  * Fixed group recursion. (broken since 0.0.1)
 * Revisions
   * Revised CHANGELOG
 

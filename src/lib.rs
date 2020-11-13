@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.4")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.5")]
 #![warn(clippy::pedantic)]
 
 #[cfg(doctest)]
