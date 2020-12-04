@@ -23,7 +23,6 @@ include = [
 publish = false
 
 [badges]
-travis-ci = { repository = "Tamschi/unquote", branch = "develop" }
 is-it-maintained-issue-resolution = { repository = "Tamschi/unquote" }
 is-it-maintained-open-issues = { repository = "Tamschi/unquote" }
 maintenance = { status = "experimental" }
