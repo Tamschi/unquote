@@ -1,7 +1,7 @@
 use call2_for_syn::{call2_allow_incomplete, call2_strict};
 use proc_macro2::Span;
 use quote::quote;
-use syn::{parse2, Ident, Lit, LitStr, Result};
+use syn::{parse2, Ident, Lit, LitStr, Result, Token};
 use unquote::unquote;
 
 //FIXME: These tests should also evaluate failures, but `call2` currently panics if not all input was parsed.
@@ -116,6 +116,19 @@ fn span_range() -> Result<()> {
 		let span;
 		unquote!(input, #^'span . #$'span);
 		Result::Ok(span)
+	})
+	.unwrap()?;
+
+	Ok(())
+}
+
+#[test]
+fn r#let() -> Result<()> {
+	let tokens = quote!(.);
+
+	let _: Token![.] = call2_strict(tokens, |input| {
+		unquote!(input, #let dot);
+		Result::Ok(dot)
 	})
 	.unwrap()?;
 

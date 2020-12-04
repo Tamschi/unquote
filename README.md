@@ -74,6 +74,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 | Bindings |  |
 |-|-|
 | `#binding` | ✔ |
+| `#let binding` | ✔ |
 | `##`-escapes | ✔ |
 
 | Groups |  |

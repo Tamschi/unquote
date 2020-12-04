@@ -53,12 +53,12 @@ fn unquote_outer(input: ParseStream) -> Result<TokenStream> {
 	let mut declare_up_front = HashSet::new();
 	let output = unquote_inner(input, &input_ident, &mut declare_up_front)?;
 	let declare_up_front = declare_up_front.into_iter();
-	Ok(quote_spanned!(Span::mixed_site()=> {
+	Ok(quote_spanned!(Span::mixed_site()=>
 		let #input_ident = #parse_stream;
 		let mut prev_span = #input_ident.cursor().span();
 		#(let #declare_up_front;)*
 		#output
-	}))
+	))
 }
 
 //TODO: Make errors specific even if the token type is mismatched outright.
@@ -96,9 +96,17 @@ fn unquote_inner(
 					match input.parse().map_err(|_| {
 						Error::new(
 							input.span(),
-							"Unexpected end of macro input: Expected Parse identifier, Span identifier written as lifetime or joined `#`",
+							"Unexpected end of macro input: Expected Parse identifier, Span identifier written as lifetime, joined `#` or `let(pattern)`",
 						)
 					})? {
+						TokenTree::Ident(r#let) if r#let == "let" => {
+							let placeholder: Ident = input.parse()?;
+							declare_up_front.insert(placeholder.clone());
+							hygienic_spanned! {punct.span().join(r#let.span()).and_then(|s| s.join(placeholder.span())).unwrap_or_else(|| r#let.span())=>
+								#placeholder = #input_ident.parse()?;
+								prev_span = syn::spanned::Spanned::span(&#placeholder);
+							}
+						}
 						TokenTree::Ident(placeholder) => {
 							hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
 								#placeholder = #input_ident.parse()?;
