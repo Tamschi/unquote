@@ -2,6 +2,14 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
+## 0.0.6
+
+2020-12-05
+
+* Use `#let ident` to declare `ident`.
+* Use `#do parser_function => binding` to parse `binding` via `parser_function`.
+* Use `#do let parser_function => binding` to declare `binding` and parse it via `parser_function`.
+
 ## 0.0.5
 
 2020-11-14

@@ -1,7 +1,7 @@
 use call2_for_syn::{call2_allow_incomplete, call2_strict};
-use proc_macro2::Span;
-use quote::quote;
-use syn::{parse2, Ident, Lit, LitStr, Result};
+use proc_macro2::{Span, TokenStream};
+use quote::{quote, ToTokens};
+use syn::{parse::ParseStream, parse2, Attribute, Ident, Lit, LitStr, Result, Token};
 use unquote::unquote;
 
 //FIXME: These tests should also evaluate failures, but `call2` currently panics if not all input was parsed.
@@ -42,7 +42,7 @@ fn literals() -> Result<()> {
 }
 
 #[test]
-fn literal_mismatch() -> Result<()> {
+fn literal_mismatch() {
 	let tokens = quote! (1 2.0 "drei" 4_i32 5_usize);
 
 	call2_allow_incomplete(tokens, |input| {
@@ -50,8 +50,6 @@ fn literal_mismatch() -> Result<()> {
 		Result::Ok(())
 	})
 	.unwrap_err();
-
-	Ok(())
 }
 
 #[test]
@@ -67,7 +65,7 @@ fn idents() -> Result<()> {
 }
 
 #[test]
-fn ident_mismatch() -> Result<()> {
+fn ident_mismatch() {
 	let tokens = quote! (static for okay);
 
 	call2_allow_incomplete(tokens.clone(), |input| {
@@ -81,8 +79,6 @@ fn ident_mismatch() -> Result<()> {
 		Result::Ok(())
 	})
 	.unwrap_err();
-
-	Ok(())
 }
 
 #[test]
@@ -122,6 +118,71 @@ fn span_range() -> Result<()> {
 		Result::Ok(span)
 	})
 	.unwrap()?;
+
+	Ok(())
+}
+
+#[derive(Debug)]
+struct Attributes(Vec<Attribute>);
+impl Attributes {
+	fn parse_outer(input: ParseStream) -> Result<Self> {
+		Attribute::parse_outer(input).map(Self)
+	}
+}
+impl ToTokens for Attributes {
+	fn to_tokens(&self, tokens: &mut TokenStream) {
+		for attr in self.0.iter() {
+			attr.to_tokens(tokens)
+		}
+	}
+}
+
+#[test]
+fn r#do() -> Result<()> {
+	let tokens = quote! {
+		#[some_attribute]
+		#[another_attribute]
+	};
+
+	let attrs = call2_strict(tokens, |input| {
+		let attr;
+		unquote!(input, #do Attributes::parse_outer => attr);
+		Result::Ok(attr)
+	})
+	.unwrap()?;
+
+	assert_eq!(attrs.0.len(), 2);
+
+	Ok(())
+}
+
+#[test]
+fn r#let() -> Result<()> {
+	let tokens = quote!(.);
+
+	let _: Token![.] = call2_strict(tokens, |input| {
+		unquote!(input, #let dot);
+		Result::Ok(dot)
+	})
+	.unwrap()?;
+
+	Ok(())
+}
+
+#[test]
+fn do_let() -> Result<()> {
+	let tokens = quote! {
+		#[some_attribute]
+		#[another_attribute]
+	};
+
+	let attrs = call2_strict(tokens, |input| {
+		unquote!(input, #do let Attributes::parse_outer => attr);
+		Result::Ok(attr)
+	})
+	.unwrap()?;
+
+	assert_eq!(attrs.0.len(), 2);
 
 	Ok(())
 }
