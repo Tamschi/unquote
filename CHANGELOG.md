@@ -2,9 +2,9 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
-## next
+## 0.0.6
 
-TODO: Date
+2020-12-05
 
 * Use `#let ident` to declare `ident`.
 * Use `#do parser_function => binding` to parse `binding` via `parser_function`.
