@@ -15,6 +15,7 @@ use quote::quote_spanned;
 use std::collections::HashSet;
 use syn::{
 	parse::{ParseStream, Parser},
+	spanned::Spanned,
 	Error, Expr, Ident, Result, Token,
 };
 
@@ -99,6 +100,21 @@ fn unquote_inner(
 							"Unexpected end of macro input: Expected Parse identifier, Span identifier written as lifetime, joined `#` or `let(pattern)`",
 						)
 					})? {
+						TokenTree::Ident(r#do) if r#do == "do" => {
+							let parser_function: Expr = input.parse()?;
+							let fat_arrow: Token![=>] = input.parse()?;
+							let placeholder: Ident = input.parse()?;
+							hygienic_spanned! {
+								punct.span()
+								.join(r#do.span())
+								.and_then(|s| s.join(fat_arrow.span()))
+								.and_then(|s| s.join(placeholder.span()))
+								.unwrap_or_else(|| r#do.span())
+								=>
+								#placeholder = #input_ident.call(#parser_function)?;
+								prev_span = syn::spanned::Spanned::span(&#placeholder);
+							}
+						}
 						TokenTree::Ident(r#let) if r#let == "let" => {
 							let placeholder: Ident = input.parse()?;
 							declare_up_front.insert(placeholder.clone());
