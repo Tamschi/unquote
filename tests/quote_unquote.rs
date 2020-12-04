@@ -42,7 +42,7 @@ fn literals() -> Result<()> {
 }
 
 #[test]
-fn literal_mismatch() -> Result<()> {
+fn literal_mismatch() {
 	let tokens = quote! (1 2.0 "drei" 4_i32 5_usize);
 
 	call2_allow_incomplete(tokens, |input| {
@@ -50,8 +50,6 @@ fn literal_mismatch() -> Result<()> {
 		Result::Ok(())
 	})
 	.unwrap_err();
-
-	Ok(())
 }
 
 #[test]
@@ -67,7 +65,7 @@ fn idents() -> Result<()> {
 }
 
 #[test]
-fn ident_mismatch() -> Result<()> {
+fn ident_mismatch() {
 	let tokens = quote! (static for okay);
 
 	call2_allow_incomplete(tokens.clone(), |input| {
@@ -81,8 +79,6 @@ fn ident_mismatch() -> Result<()> {
 		Result::Ok(())
 	})
 	.unwrap_err();
-
-	Ok(())
 }
 
 #[test]
