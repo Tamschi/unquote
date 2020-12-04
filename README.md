@@ -76,6 +76,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 | `#binding` | ✔ |
 | `#let binding` | ✔ |
 | `#do parser_function => binding` | ✔ |
+| `#do let parser_function => binding` | ✔ |
 | `##`-escapes | ✔ |
 
 | Groups |  |

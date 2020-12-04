@@ -168,3 +168,21 @@ fn r#let() -> Result<()> {
 
 	Ok(())
 }
+
+#[test]
+fn do_let() -> Result<()> {
+	let tokens = quote! {
+		#[some_attribute]
+		#[another_attribute]
+	};
+
+	let attrs = call2_strict(tokens, |input| {
+		unquote!(input, #do let Attributes::parse_outer => attr);
+		Result::Ok(attr)
+	})
+	.unwrap()?;
+
+	assert_eq!(attrs.0.len(), 2);
+
+	Ok(())
+}

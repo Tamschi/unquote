@@ -101,9 +101,13 @@ fn unquote_inner(
 						)
 					})? {
 						TokenTree::Ident(r#do) if r#do == "do" => {
+							let r#let: Option<Token![let]> = input.parse()?;
 							let parser_function: Expr = input.parse()?;
 							let fat_arrow: Token![=>] = input.parse()?;
 							let placeholder: Ident = input.parse()?;
+							if r#let.is_some() {
+								declare_up_front.insert(placeholder.clone());
+							}
 							hygienic_spanned! {
 								punct.span()
 								.join(r#do.span())
