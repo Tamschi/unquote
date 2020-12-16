@@ -40,7 +40,7 @@ macro_rules! grammar_todo {
 		return Err(Error::new_spanned(
 			$token,
 			format_args!("Not yet implemented: {}", $name),
-			));
+		));
 	};
 }
 
