@@ -2,6 +2,14 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
+## next
+
+TODO: Date
+
+* **Breaking changes**
+  * Removed [`Span`] for the time being.
+    > The previous implementation caused more issues than it solved, since it retrieved [`Span`]s of previously parsed tokens.
+
 ## 0.0.6
 
 2020-12-05

@@ -96,8 +96,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 | Span Captures |  |
 |-|-|
 | `#'span`⁴ | ✔ |
-| `#^'span`⁴ | ✔ |
-| `#$'span`⁴ | ✔ |
+| `#^'span`⁴ |  |
+| `#$'span`⁴ |  |
 
 | Positional Bindings...?⁵ |  |
 |-|-|
