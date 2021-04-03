@@ -83,9 +83,7 @@ fn unquote_inner(
 			TokenTree::Ident(ident) => {
 				let message = Literal::string(&format!("Expected `{}`", ident.to_string()));
 				hygienic_spanned! {ident.span()=>
-					if #input_ident.call(<syn::Ident as syn::ext::IdentExt>::parse_any)?
-						!= syn::parse::Parser::parse2(<syn::Ident as syn::ext::IdentExt>::parse_any, quote!(#ident)).unwrap()
-					{
+					if #input_ident.call(<syn::Ident as syn::ext::IdentExt>::parse_any)? != stringify!(#ident) {
 						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
 					}
 				}

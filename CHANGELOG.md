@@ -9,6 +9,11 @@ TODO: Date
 * **Breaking changes**
   * Removed [`Span`] for the time being.
     > The previous implementation caused more issues than it solved, since it retrieved [`Span`]s of previously parsed tokens.
+* Features
+  * [`quote`] now doesn't have to be in scope to unquote literal identifiers.
+
+[`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
+[`quote`]: https://docs.rs/quote/1.0.9/quote/macro.quote.html
 
 ## 0.0.6
 
