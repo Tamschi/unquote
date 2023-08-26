@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.6")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.7")]
 #![warn(clippy::pedantic)]
 
 #[cfg(doctest)]
@@ -40,7 +40,7 @@ macro_rules! grammar_todo {
 		return Err(Error::new_spanned(
 			$token,
 			format_args!("Not yet implemented: {}", $name),
-		));
+		))
 	};
 }
 
@@ -81,7 +81,7 @@ fn unquote_inner(
 					.unwrap_or_else(|_| Err(Error::new(group.span_close(), "Unexpected end of undelimited group")))?,
 			},
 			TokenTree::Ident(ident) => {
-				let message = Literal::string(&format!("Expected `{}`", ident.to_string()));
+				let message = Literal::string(&format!("Expected `{ident}`"));
 				hygienic_spanned! {ident.span()=>
 					if #input_ident.call(<syn::Ident as syn::ext::IdentExt>::parse_any)? != stringify!(#ident) {
 						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
@@ -156,7 +156,7 @@ fn unquote_inner(
 				},
 			},
 			TokenTree::Literal(literal) => {
-				let message = Literal::string(&format!("Expected `{}`", literal.to_string()));
+				let message = Literal::string(&format!("Expected `{literal}`"));
 				hygienic_spanned! {literal.span()=>
 					let parsed = #input_ident.parse::<syn::Lit>()?;
 					if parsed != syn::parse2(quote!(#literal)).unwrap() {

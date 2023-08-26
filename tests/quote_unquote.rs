@@ -1,3 +1,5 @@
+#![allow(clippy::needless_late_init)]
+
 use call2_for_syn::{call2_allow_incomplete, call2_strict};
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, ToTokens};
