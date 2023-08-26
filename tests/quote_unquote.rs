@@ -1,3 +1,5 @@
+#![allow(clippy::needless_late_init)]
+
 use call2_for_syn::{call2_allow_incomplete, call2_strict};
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, ToTokens};
@@ -105,21 +107,6 @@ fn number_sign_escape() -> Result<()> {
 		Result::Ok(())
 	})
 	.unwrap()
-}
-
-//TODO: Test more thoroughly which spans are captured!
-#[test]
-fn span_range() -> Result<()> {
-	let tokens = quote!(.);
-
-	let _: Span = call2_strict(tokens, |input| {
-		let span;
-		unquote!(input, #^'span . #$'span);
-		Result::Ok(span)
-	})
-	.unwrap()?;
-
-	Ok(())
 }
 
 #[derive(Debug)]

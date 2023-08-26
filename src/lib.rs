@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.6")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.7")]
 #![warn(clippy::pedantic)]
 
 #[cfg(doctest)]
@@ -40,7 +40,7 @@ macro_rules! grammar_todo {
 		return Err(Error::new_spanned(
 			$token,
 			format_args!("Not yet implemented: {}", $name),
-			));
+		))
 	};
 }
 
@@ -56,7 +56,6 @@ fn unquote_outer(input: ParseStream) -> Result<TokenStream> {
 	let declare_up_front = declare_up_front.into_iter();
 	Ok(quote_spanned!(Span::mixed_site()=>
 		let #input_ident = #parse_stream;
-		let mut prev_span = #input_ident.cursor().span();
 		#(let #declare_up_front;)*
 		#output
 	))
@@ -82,11 +81,9 @@ fn unquote_inner(
 					.unwrap_or_else(|_| Err(Error::new(group.span_close(), "Unexpected end of undelimited group")))?,
 			},
 			TokenTree::Ident(ident) => {
-				let message = Literal::string(&format!("Expected `{}`", ident.to_string()));
+				let message = Literal::string(&format!("Expected `{ident}`"));
 				hygienic_spanned! {ident.span()=>
-					if #input_ident.call(<syn::Ident as syn::ext::IdentExt>::parse_any)?
-						!= syn::parse::Parser::parse2(<syn::Ident as syn::ext::IdentExt>::parse_any, quote!(#ident)).unwrap()
-					{
+					if #input_ident.call(<syn::Ident as syn::ext::IdentExt>::parse_any)? != stringify!(#ident) {
 						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
 					}
 				}
@@ -116,7 +113,6 @@ fn unquote_inner(
 								.unwrap_or_else(|| r#do.span())
 								=>
 								#placeholder = #input_ident.call(#parser_function)?;
-								prev_span = syn::spanned::Spanned::span(&#placeholder);
 							}
 						}
 						TokenTree::Ident(r#let) if r#let == "let" => {
@@ -124,18 +120,16 @@ fn unquote_inner(
 							declare_up_front.insert(placeholder.clone());
 							hygienic_spanned! {punct.span().join(r#let.span()).and_then(|s| s.join(placeholder.span())).unwrap_or_else(|| r#let.span())=>
 								#placeholder = #input_ident.parse()?;
-								prev_span = syn::spanned::Spanned::span(&#placeholder);
 							}
 						}
 						TokenTree::Ident(placeholder) => {
 							hygienic_spanned! {punct.span().join(placeholder.span()).unwrap_or_else(|| placeholder.span())=>
 								#placeholder = #input_ident.parse()?;
-								prev_span = syn::spanned::Spanned::span(&#placeholder);
 							}
 						}
 						TokenTree::Punct(number_sign) if punct.spacing() == Spacing::Joint && number_sign.as_char() == '#' => {
 							hygienic_spanned! {punct.span().join(number_sign.span()).unwrap_or_else(||number_sign.span())=>
-								prev_span = #input_ident.parse::<syn::Token![#]>()?.span;
+								#input_ident.parse::<syn::Token![#]>()?;
 							}
 						}
 						TokenTree::Punct(apostrophe)
@@ -148,50 +142,6 @@ fn unquote_inner(
 								#placeholder = #input_ident.span();
 							}
 						}
-						TokenTree::Punct(caret)
-							if punct.spacing() == Spacing::Joint
-							&& caret.as_char() == '^' =>
-						{
-							let apostrophe: TokenTree= input.parse()?;
-							match apostrophe {
-								TokenTree::Punct(apostrophe)
-									if apostrophe.as_char() == '\''
-										&&apostrophe.spacing() == Spacing::Joint =>
-								{
-									let identifier = input.parse::<Ident>()?;
-									let hygienic_identifier = Ident::new(&identifier.to_string(), identifier.span().resolved_at(Span::mixed_site()));
-									if !declare_up_front.insert(hygienic_identifier.clone()) {
-										return Err(Error::new(identifier.span(), format_args!("Duplicate Span start: `{}`", identifier)));
-									}
-									hygienic_spanned!(punct.span().join(identifier.span()).unwrap_or_else(|| identifier.span())=>
-										#hygienic_identifier = #input_ident.cursor().span();
-									)
-								}
-								other => {
-									return Err(Error::new_spanned(other, "Expected span identifier written as lifetime."));
-								}
-							}
-						}
-						TokenTree::Punct(dollar)
-							if punct.spacing() == Spacing::Joint && dollar.as_char() == '$' =>
-						{
-							let apostrophe: TokenTree = input.parse()?;
-							match apostrophe {
-								TokenTree::Punct(apostrophe)
-									if apostrophe.as_char() == '\''
-										&& apostrophe.spacing() == Spacing::Joint =>
-								{
-									let identifier = input.parse::<Ident>()?;
-									let hygienic_identifier = Ident::new(&identifier.to_string(), identifier.span().resolved_at(Span::mixed_site()));
-									hygienic_spanned!(punct.span().join(identifier.span()).unwrap_or_else(|| identifier.span())=>
-										#identifier = #hygienic_identifier.join(prev_span).unwrap_or(#hygienic_identifier);
-									)
-								}
-								other => {
-									return Err(Error::new_spanned(other, "Expected span identifier written as lifetime."));
-								}
-							}
-						}
 						other => {
 							return Err(Error::new_spanned(
 								other,
@@ -202,17 +152,15 @@ fn unquote_inner(
 				}
 				_char => hygienic_spanned! {punct.span()=>
 					//TODO: Spacing
-					prev_span = #input_ident.parse::<syn::Token![#punct]>()?.span;
+					#input_ident.parse::<syn::Token![#punct]>()?;
 				},
 			},
 			TokenTree::Literal(literal) => {
-				let message = Literal::string(&format!("Expected `{}`", literal.to_string()));
+				let message = Literal::string(&format!("Expected `{literal}`"));
 				hygienic_spanned! {literal.span()=>
 					let parsed = #input_ident.parse::<syn::Lit>()?;
 					if parsed != syn::parse2(quote!(#literal)).unwrap() {
 						return Err(syn::Error::new(#input_ident.cursor().span(), #message));
-					} else {
-						prev_span = parsed.span();
 					}
 				}
 			}

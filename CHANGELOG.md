@@ -2,6 +2,24 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
+## 0.0.7
+
+2023-08-26
+
+* **Breaking changes**
+  * Removed [`Span`] for the time being.
+    > The previous implementation caused more issues than it solved, since it retrieved [`Span`]s of previously parsed tokens.
+* Features
+  * [`quote`] now doesn't have to be in scope to unquote literal identifiers.
+* Fixed
+  * Missing `syn/printing` dependency feature.
+* Revisions
+  * Updated Syn dependency to version `2.0.29`.
+  * Fixed a few warnings.
+
+[`Span`]: https://docs.rs/proc-macro2/1/proc_macro2/struct.Span.html
+[`quote`]: https://docs.rs/quote/1.0.9/quote/macro.quote.html
+
 ## 0.0.6
 
 2020-12-05
