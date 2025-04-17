@@ -1,12 +1,15 @@
 # unquote
 
+| This project is archived. Consider [`loess::grammar!`](https://docs.rs/loess/latest/loess/macro.grammar.html) as replacement, which is `macro_rules!`-based and overall a considerably better approach. |
+| - |
+
 [![Lib.rs](https://img.shields.io/badge/Lib.rs-*-84f)](https://lib.rs/crates/unquote)
 [![Crates.io](https://img.shields.io/crates/v/unquote)](https://crates.io/crates/unquote)
 [![Docs.rs](https://docs.rs/unquote/badge.svg)](https://docs.rs/crates/unquote)
 
 ![Rust 1.45.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.45.0&color=grey)
 [![CI](https://github.com/Tamschi/unquote/workflows/CI/badge.svg?branch=unstable)](https://github.com/Tamschi/unquote/actions?query=workflow%3ACI+branch%3Aunstable)
-![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.7)
+![Crates.io - License](https://img.shields.io/crates/l/unquote/0.0.8)
 
 [![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/unquote)
 [![open issues](https://img.shields.io/github/issues-raw/Tamschi/unquote)](https://github.com/Tamschi/unquote/issues)
