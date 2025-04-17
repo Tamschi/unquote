@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/unquote/0.0.7")]
+#![doc(html_root_url = "https://docs.rs/unquote/0.0.8")]
 #![warn(clippy::pedantic)]
 
 #![deprecated = "This project is archived! `loess::grammar!` is a considerably better approach and alternative."]

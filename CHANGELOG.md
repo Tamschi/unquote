@@ -2,6 +2,12 @@
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 
+## 0.0.8
+
+2025-04-17
+
+Added deprecation notice in favour of [Loess](https://docs.rs/loess/).
+
 ## 0.0.7
 
 2023-08-26
