@@ -1,6 +1,8 @@
 #![doc(html_root_url = "https://docs.rs/unquote/0.0.7")]
 #![warn(clippy::pedantic)]
 
+#![deprecated = "This project is archived! `loess::grammar!` is a considerably better approach and alternative."]
+
 #[cfg(doctest)]
 mod readme {
 	doc_comment::doctest!("../README.md");

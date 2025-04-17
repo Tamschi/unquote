@@ -1,5 +1,8 @@
 # unquote
 
+| This project is archived. Consider [`loess::grammar!`](https://docs.rs/loess/latest/loess/macro.grammar.html) as replacement, which is `macro_rules!`-based and overall a considerably better approach. |
+| - |
+
 [![Lib.rs](https://img.shields.io/badge/Lib.rs-*-84f)](https://lib.rs/crates/unquote)
 [![Crates.io](https://img.shields.io/crates/v/unquote)](https://crates.io/crates/unquote)
 [![Docs.rs](https://docs.rs/unquote/badge.svg)](https://docs.rs/crates/unquote)
